@@ -1,0 +1,22 @@
+{
+  "name": "reisraff.github.io",
+  "homepage": "https://reisraff.github.io/",
+  "authors": [
+    "Rafael Reis <reisraff@gmail.com>"
+  ],
+  "description": "The Rafael Reis's personal webpage.",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "highlight.js": "isagalaev/highlight.js#^9.2.0"
+  }
+}
