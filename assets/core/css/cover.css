@@ -4,7 +4,7 @@ body {
 }
 
 .presentation {
-  background: url('assets/img/background.jpg');
+  background: url('../img/background.jpg');
   background-size: cover;
   background-position: 0px 0px;
   background-repeat: no-repeat;
@@ -21,7 +21,7 @@ body {
   width: 250px;
   height: 250px;
   margin: 20px auto;
-  background: url('assets/img/userpic.png');
+  background: url('../img/userpic.png');
   background-position: 50% 0px;
   background-size: 88%;
   background-repeat: no-repeat;
