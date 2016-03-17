@@ -1,0 +1,5 @@
+var jsx = <node/>;
+var jsx = <node><child/></node>;
+var jsx = <node>...<child>...</child></node>;
+var x = 5;
+return (<node attr="value"></node>);

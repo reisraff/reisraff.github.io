@@ -17,6 +17,8 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.6",
-    "highlight.js": "isagalaev/highlight.js#^9.2.0"
+    "highlight.js": "isagalaev/highlight.js#^9.2.0",
+    "moment-precise-range-object": "rogeriopradoj/moment-precise-range-object",
+    "moment": "^2.12.0"
   }
 }
