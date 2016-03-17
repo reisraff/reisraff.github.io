@@ -1,0 +1,9 @@
+.char-limit {
+  overflow: hidden;
+  max-height: 300px;
+}
+
+.fix-width {
+  padding-left: 15px !important;
+  min-width: 115px;
+}
