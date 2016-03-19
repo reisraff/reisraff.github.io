@@ -13,7 +13,9 @@
         'toastr',
         'ngProgress',
         'ng-showdown',
-        'ngDisqus'
+        'ngDisqus',
+        'angulartics',
+        'angulartics.google.analytics'
       ]
     );
 
