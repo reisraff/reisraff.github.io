@@ -20,6 +20,8 @@ gulp.task('scripts', function() {
 
 function buildScripts() {
   return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
+    .pipe($.jshint('.jshintrc'))
+    .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.eslint())
     .pipe($.eslint.format())
     .pipe($.size())

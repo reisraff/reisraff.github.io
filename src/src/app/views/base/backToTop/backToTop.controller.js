@@ -1,16 +1,16 @@
 (function() {
   'use strict';
 
-  angular
-    .module('app')
-    .controller('BackToTopController', BackToTopController);
-
   /** @ngInject */
-  function BackToTopController(scroll) {
-    var _self = this;
+  angular.module('app').controller(
+    'BackToTopController',
+    function BackToTopController(scroll) {
+      var _self = this;
 
-    _self.backToTop = function () {
-      scroll.scrollTo(0, 0.2);
-    };
-  }
+      _self.backToTop = function () {
+        scroll.scrollTo(0, 0.2);
+      };
+    }
+  );
+
 })();

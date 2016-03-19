@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  angular
-    .module('app')
-    .controller('PostsListController', PostsListController);
-
   /** @ngInject */
-  function PostsListController(PostsResolve) {
-    var _self = this;
+  angular.module('app').controller(
+    'PostsListController',
+    function PostsListController(PostsResolve) {
+      var _self = this;
 
-    _self.posts = PostsResolve;
-  }
+      _self.posts = PostsResolve;
+    }
+  );
+
 })();

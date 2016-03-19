@@ -1,19 +1,18 @@
 (function() {
   'use strict';
 
-  angular
-    .module('app')
-    .run(run);
-
   /** @ngInject */
-  function run($rootScope, ngProgress) {
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-      ngProgress.start();
-    });
+  angular.module('app').run(
+    function run($rootScope, ngProgress, scroll) {
+      $rootScope.$on('$stateChangeStart', function () {
+        ngProgress.start();
+      });
 
-    $rootScope.$on('$stateChangeSuccess', function () {
-      ngProgress.complete();
-    });
-  }
+      $rootScope.$on('$stateChangeSuccess', function () {
+        ngProgress.complete();
+        scroll.scrollTo(0, 0.2);
+      });
+    }
+  );
 
 })();
