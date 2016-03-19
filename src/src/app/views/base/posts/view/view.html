@@ -1,0 +1,14 @@
+<section class="bg-black text-center">
+  <h4 class="white uppercase"><a href="javascript://" ui-sref="root.posts">Voltar aos POSTS</a></h4>
+</section>
+
+<section>
+  <div class="container">
+    <article markdown-to-html="controller.post.content"></article>
+    <nav class="navbar navbar-default">
+      <div class="containter-fluid">
+        <p class="navbar-text navbar-right fix-width">{{ controller.post.createdAt | date : 'dd/MM/yyyy' }}</p>
+      </div>
+    </nav>
+  </div>
+</section>
