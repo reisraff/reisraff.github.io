@@ -6,7 +6,7 @@
     .controller('HomeController', HomeController);
 
   /** @ngInject */
-  function HomeController($location) {
+  function HomeController($location, PageResolve) {
     var _self = this;
 
     _self.me = {
@@ -25,7 +25,7 @@
         bold: true
       },
       {
-        state:'/posts',
+        state:'/posts/' + PageResolve,
         label: 'Posts',
         bold: true
       }

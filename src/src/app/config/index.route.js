@@ -8,6 +8,27 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
 
+    /** @ngInject */
+    var PageResolve = function (PaginationService) {
+      return PaginationService.latestPage().then(function (data) {
+        return data;
+      });
+    };
+
+    /** @ngInject */
+    var PostResolve = function ($stateParams, PostService) {
+      return PostService.get($stateParams.page, $stateParams.id).then(function (data) {
+        return data;
+      });
+    };
+
+    /** @ngInject */
+    var PostsResolve = function ($stateParams, PostService) {
+      return PostService.list($stateParams.page).then(function (data) {
+        return data;
+      });
+    };
+
     var backToTop = {
       templateUrl: 'app/views/base/backToTop/backToTop.html',
       controller: 'BackToTopController',
@@ -30,7 +51,10 @@
             'content': {
               templateUrl: 'app/views/base/home/home.html',
               controller: 'HomeController',
-              controllerAs: 'controller'
+              controllerAs: 'controller',
+              resolve: {
+                'PageResolve': PageResolve
+              }
             },
             'back-to-top': backToTop
           }
@@ -44,7 +68,10 @@
             'content': {
               templateUrl: 'app/views/base/posts/view/view.html',
               controller: 'PostsViewController',
-              controllerAs: 'controller'
+              controllerAs: 'controller',
+              resolve: {
+                'PostResolve': PostResolve
+              }
             },
             'back-to-top': backToTop
           }
@@ -53,12 +80,15 @@
       {
         stateName: 'root.posts',
         stateData: {
-          url: '/posts',
+          url: '/posts/:page',
           views: {
             'content': {
               templateUrl: 'app/views/base/posts/list/list.html',
               controller: 'PostsListController',
-              controllerAs: 'controller'
+              controllerAs: 'controller',
+              resolve: {
+                'PostsResolve': PostsResolve
+              }
             },
             'back-to-top': backToTop
           }
