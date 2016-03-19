@@ -12,7 +12,8 @@
         'ui.bootstrap',
         'toastr',
         'ngProgress',
-        'ng-showdown'
+        'ng-showdown',
+        'ngDisqus'
       ]
     );
 

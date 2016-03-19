@@ -9,10 +9,12 @@
   function PostsViewController($stateParams, $http, $showdown) {
     var _self = this;
 
-    _self.post = {};
-
     var page = $stateParams.page;
     var id = $stateParams.id;
+
+    _self.post = {
+      id: id
+    };
 
     function getPage(page) {
       return $http.get('assets/posts/pagination/' + page + '.json').success(function(response) {
