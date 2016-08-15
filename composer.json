@@ -1,0 +1,19 @@
+{
+    "name": "reisraff/reisraff.github.io",
+    "description": "The Rafael's personal web page",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://reisraff.github.io/phulp/dist/#!/home",
+    "authors": [
+        {
+            "name": "Rafael Reis",
+            "email": "reisraff@gmail.com"
+        }
+    ],
+    "require": {
+        "reisraff/phulp" : "~1.2"
+    },
+    "bin": [
+        "bin/phulp"
+    ]
+}
