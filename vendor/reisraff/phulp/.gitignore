@@ -1,5 +1,0 @@
-vendor
-/bin/*
-!/bin/.gitkeep
-!/bin/phulp.php
-!/bin/phulp

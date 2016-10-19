@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "reisraff/phulp",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reisraff/phulp.git",
-                "reference": "398869eceec05d3e114dc570533ec88e5a809e74"
+                "reference": "888fc4b553f5540fa6c40e278ea5a2e6109d7f19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reisraff/phulp/zipball/398869eceec05d3e114dc570533ec88e5a809e74",
-                "reference": "398869eceec05d3e114dc570533ec88e5a809e74",
+                "url": "https://api.github.com/repos/reisraff/phulp/zipball/888fc4b553f5540fa6c40e278ea5a2e6109d7f19",
+                "reference": "888fc4b553f5540fa6c40e278ea5a2e6109d7f19",
                 "shasum": ""
             },
             "require": {
@@ -57,20 +57,20 @@
                 "php",
                 "phulp"
             ],
-            "time": "2016-07-20 21:24:43"
+            "time": "2016-09-21 21:45:06"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.1.3",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "8201978de88a9fa0923e18601bb17f1df9c721e7"
+                "reference": "205b5ffbb518a98ba2ae60a52656c4a31ab00c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/8201978de88a9fa0923e18601bb17f1df9c721e7",
-                "reference": "8201978de88a9fa0923e18601bb17f1df9c721e7",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/205b5ffbb518a98ba2ae60a52656c4a31ab00c6f",
+                "reference": "205b5ffbb518a98ba2ae60a52656c4a31ab00c6f",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
+            "time": "2016-09-28 00:11:12"
         }
     ],
     "packages-dev": [],
