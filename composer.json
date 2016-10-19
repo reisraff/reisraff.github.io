@@ -13,7 +13,7 @@
     "require": {
         "reisraff/phulp" : "~1.2"
     },
-    "bin": [
-        "bin/phulp"
-    ]
+    "config": {
+        "bin-dir" : "bin/"
+    }
 }

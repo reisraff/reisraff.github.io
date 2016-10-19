@@ -114,6 +114,9 @@ $phulp->task('other', function ($phulp) use ($config) {
         [$config['src']],
         '/\.[^(html|css|js|scss)]$/'
     )
+        ->pipe($phulp->iterate(function ($distFile) {
+            echo $distFile->getName() . PHP_EOL;
+        }))
         ->pipe($phulp->dest($config['dist']));
 });
 
