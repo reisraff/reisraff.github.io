@@ -112,11 +112,8 @@ $phulp->task('fonts', function ($phulp) use ($config) {
 $phulp->task('other', function ($phulp) use ($config) {
     $phulp->src(
         [$config['src']],
-        '/\.[^(html|css|js|scss)]$/'
+        '/.+(?<!html|css|js|scss)$/'
     )
-        ->pipe($phulp->iterate(function ($distFile) {
-            echo $distFile->getName() . PHP_EOL;
-        }))
         ->pipe($phulp->dest($config['dist']));
 });
 
