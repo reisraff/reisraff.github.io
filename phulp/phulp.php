@@ -129,3 +129,29 @@ $phulp->task('build', function ($phulp) {
 $phulp->task('default', function ($phulp) {
     $phulp->start(['clean', 'build']);
 });
+
+
+$phulp->task('watch', function ($phulp) use ($config) {
+    $server1 = new \Phulp\Server\Server(
+        [
+            'path' => realpath($config['tmp'] . '/serve'),
+            'port' => '8000'
+        ],
+        $phulp->getLoop()
+    );
+
+    $server1 = new \Phulp\Server\Server(
+        [
+            'path' => realpath($config['tmp'] . '/serve'),
+            'port' => '8001'
+        ],
+        $phulp->getLoop()
+    );
+
+    $phulp->watch(
+        $phulp->src(['phulp/'], '/php$/'),
+        function ($phulp) {
+            \Phulp\Output::out(Phulp\Output::colorize('huehuehue', 'red'));
+        }
+    );
+});

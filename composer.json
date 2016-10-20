@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "reisraff/phulp" : "~1.2"
+        "reisraff/phulp" : "~1.2",
+        "reisraff/phulp-server": "dev-master"
     },
     "config": {
         "bin-dir" : "bin/"
