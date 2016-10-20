@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4d7a35776c41911abdad2862d533fab7",
-    "content-hash": "e6c9a8758fee46f7d375b8f3e5d15257",
+    "hash": "52372d00a672a6524a25847bb65fe906",
+    "content-hash": "1f636ac3ba165b9bbcf24707f2a2b816",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -52,6 +52,59 @@
                 "event-emitter"
             ],
             "time": "2012-11-02 14:49:47"
+        },
+        {
+            "name": "leafo/scssphp",
+            "version": "v0.6.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leafo/scssphp.git",
+                "reference": "6fdfe19d2b13a3f12ba0792227f0718809ce4e4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/6fdfe19d2b13a3f12ba0792227f0718809ce4e4d",
+                "reference": "6fdfe19d2b13a3f12ba0792227f0718809ce4e4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "kherge/box": "~2.5",
+                "phpunit/phpunit": "~3.7",
+                "squizlabs/php_codesniffer": "~2.5"
+            },
+            "bin": [
+                "bin/pscss"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Leafo\\ScssPhp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Leaf Corcoran",
+                    "email": "leafot@gmail.com",
+                    "homepage": "http://leafo.net"
+                }
+            ],
+            "description": "scssphp is a compiler for SCSS written in PHP.",
+            "homepage": "http://leafo.github.io/scssphp/",
+            "keywords": [
+                "css",
+                "less",
+                "sass",
+                "scss",
+                "stylesheet"
+            ],
+            "time": "2016-09-11 01:34:11"
         },
         {
             "name": "react/child-process",
@@ -239,12 +292,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reisraff/phulp-server.git",
-                "reference": "cb320a6194c0d812e1aa2cc68a6b27ee43b50e1b"
+                "reference": "3d9f7d24e7767d12722b5f56eccd0857bd87f020"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reisraff/phulp-server/zipball/cb320a6194c0d812e1aa2cc68a6b27ee43b50e1b",
-                "reference": "cb320a6194c0d812e1aa2cc68a6b27ee43b50e1b",
+                "url": "https://api.github.com/repos/reisraff/phulp-server/zipball/3d9f7d24e7767d12722b5f56eccd0857bd87f020",
+                "reference": "3d9f7d24e7767d12722b5f56eccd0857bd87f020",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +327,7 @@
                 "phulp",
                 "server"
             ],
-            "time": "2016-10-20 03:37:01"
+            "time": "2016-10-20 14:06:05"
         },
         {
             "name": "symfony/finder",

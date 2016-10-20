@@ -35,8 +35,8 @@ var buildStyles = function() {
       filePath = filePath.replace(conf.paths.src + '/app/', '');
       return '@import "' + filePath + '";';
     },
-    starttag: '// injector',
-    endtag: '// endinjector',
+    starttag: '/* inject */',
+    endtag: '/* endinject */',
     addRootSlash: false
   };
 

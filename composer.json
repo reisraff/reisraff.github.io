@@ -12,7 +12,8 @@
     ],
     "require": {
         "reisraff/phulp" : "~1.2",
-        "reisraff/phulp-server": "dev-master"
+        "reisraff/phulp-server": "dev-master",
+        "leafo/scssphp": "^0.6.6"
     },
     "config": {
         "bin-dir" : "bin/"

@@ -3,12 +3,12 @@
 class AngularTemplateCache implements \Phulp\PipeInterface
 {
     private $filename;
-    private $options = [];
+    private $options = [
+        'module' => null,
+    ];
 
     public function __construct($filename, array $options)
     {
-        $this->options['module'] = null;
-
         $this->filename = $filename;
         $this->options = array_merge($this->options, $options);
     }
