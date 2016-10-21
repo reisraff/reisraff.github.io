@@ -2,6 +2,7 @@
 
 $config = require 'config.php';
 
+require 'AngularFileSort.php';
 require 'AngularTemplateCache.php';
 require 'Inject.php';
 require 'ScssCompiler.php';
@@ -21,7 +22,7 @@ $phulp->task('inject', function ($phulp) use ($config) {
         [$config['src'] . '/app'],
         '/.+(?<!spec|mock)\.js$/'
     )
-        // ->pipe($.angularFilesort())
+        ->pipe(new AngularFileSort)
         ->pipe($phulp->dest($config['tmp'] . '/serve/app'))
         ;
 
