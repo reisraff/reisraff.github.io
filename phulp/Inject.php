@@ -10,7 +10,7 @@ class Inject implements \Phulp\PipeInterface
     ];
     private $prepared = [];
     private $tags = [
-        'html' => '(\<!--\s*{{name}}:{{ext}}\s*--\>)',
+        'html' => '(\<!--\s*{{name}}:{{ext}}\s*-->)',
         'haml' => '(-#\s*{{name}}:{{ext}})',
         'jade' => '(\/\/-\s*{{name}}:{{ext}})',
         'pug' =>  '(\/\/-\s*{{name}}:{{ext}})',
