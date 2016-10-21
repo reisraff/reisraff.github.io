@@ -6,23 +6,21 @@ class AngularFileSort implements \Phulp\PipeInterface
     {
         $stack = $modules = $modulesName = $orderedModules = [];
 
-        while ($distFiles = $src->getDistFiles()) {
-            foreach ($distFiles as $key => $distFile) {
-                $src->removeDistFile($key);
+        foreach ($src->getDistFiles() as $key => $distFile) {
+            $src->removeDistFile($key);
 
-                if (! $this->isModule($distFile->getContent())) {
-                    $stack[] = $distFile;
-                    continue;
-                }
-
-                $moduleName = $this->getModuleName($distFile);
-                $modulesName[] = $moduleName;
-
-                $modules[$moduleName] = [
-                    'distFile' => $distFile,
-                    'dependencies' => $this->getDependencies($distFile),
-                ];
+            if (! $this->isModule($distFile->getContent())) {
+                $stack[] = $distFile;
+                continue;
             }
+
+            $moduleName = $this->getModuleName($distFile);
+            $modulesName[] = $moduleName;
+
+            $modules[$moduleName] = [
+                'distFile' => $distFile,
+                'dependencies' => $this->getDependencies($distFile),
+            ];
         }
 
         foreach ($modules as $key => $module) {
@@ -42,9 +40,9 @@ class AngularFileSort implements \Phulp\PipeInterface
             }
         }
 
-
-        array_unshift($stack, $orderedModules);
-        var_dump($stack);die;
+        foreach ($orderedModules as $module) {
+            array_unshift($stack, $module['distFile']);
+        }
 
         array_walk($stack, [$src, 'addDistFile']);
     }

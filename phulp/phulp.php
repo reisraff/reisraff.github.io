@@ -6,6 +6,8 @@ require 'AngularFileSort.php';
 require 'AngularTemplateCache.php';
 require 'Inject.php';
 require 'ScssCompiler.php';
+require 'Filter.php';
+require 'InjectBowerVendor.php';
 require 'scripts.php';
 require 'styles.php';
 require 'others.php';
@@ -39,9 +41,25 @@ $phulp->task('inject', function ($phulp) use ($config) {
     };
 
     $phulp->src([$config['src']], '/html$/', false)
-        ->pipe(new Inject($injectStyles, ['filterFilename' => $filterFilename]))
-        ->pipe(new Inject($injectScripts, ['filterFilename' => $filterFilename]))
-        // ->pipe(wiredep(_.extend({}, conf.wiredep)))
+        ->pipe(new Inject($injectStyles->getDistFiles(), ['filterFilename' => $filterFilename]))
+        ->pipe(new Inject($injectScripts->getDistFiles(), ['filterFilename' => $filterFilename]))
+        ->pipe(new InjectBowerVendor([
+            'bowerPath' => $config['bower_components'],
+            'distVendorPath' => $config['tmp'] . '/serve/vendor',
+            'filter' => function ($distFile) {
+                $filename = $distFile->getRelativepath() . '/' . $distFile->getName();
+                if (preg_match('/^(?!angular-bootstrap|bootstrap-sass|jquery|angular-mocks|animate).*/', $filename)) {
+                    return true;
+                }
+            },
+            'injectOptions' => [
+                'filterFilename' => function ($filename) {
+                    return preg_replace('/src\/bower_components\//', 'app/vendor/', $filename);
+                },
+                'starttag' => '<!-- bower:js -->',
+                'endtag' => '<!-- endbower -->',
+            ]
+        ]))
         ->pipe($phulp->dest($config['tmp'] . '/serve'));
 });
 

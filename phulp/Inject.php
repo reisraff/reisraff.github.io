@@ -2,10 +2,11 @@
 
 class Inject implements \Phulp\PipeInterface
 {
-    private $src;
+    private $distFiles;
     private $options = [
-        'starttag' => 'inject',
-        'endtag' => 'endinject',
+        'tagname' => 'inject',
+        'starttag' => null,
+        'endtag' => null,
         'filterFilename' => null,
     ];
     private $prepared = [];
@@ -98,15 +99,19 @@ class Inject implements \Phulp\PipeInterface
         ],
     ];
 
-    public function __construct(\Phulp\Source $src, array $options = null)
+    public function __construct(\Phulp\Collection $distFiles, array $options = null)
     {
-        $this->src = $src;
+        if ($distFiles->getType() !== \Phulp\DistFile::class) {
+            throw new \Exception('message');
+        }
+
+        $this->distFiles = $distFiles;
         $this->options = array_merge($this->options, (array) $options);
     }
 
     public function execute(\Phulp\Source $src)
     {
-        foreach ($this->src->getDistFiles() as $distFile) {
+        foreach ($this->distFiles as $distFile) {
             $this->prepare($distFile);
         }
 
@@ -173,7 +178,21 @@ class Inject implements \Phulp\PipeInterface
 
     private function getInjectionPlaceholder($ext, $start = true)
     {
-        $name = $start ? $this->options['starttag'] : $this->options['endtag'];
+        if ($start && $this->options['starttag']) {
+            return sprintf(
+                '(%s)',
+                preg_quote($this->options['starttag'])
+            );
+        }
+
+        if (! $start && $this->options['endtag']) {
+            return sprintf(
+                '(%s)',
+                preg_quote($this->options['endtag'])
+            );
+        }
+
+        $name = $start ? 'inject' : 'endinject';
 
         $tag = $this->tags[$ext];
         $tag = preg_replace('/{{name}}/', $name, $tag);
