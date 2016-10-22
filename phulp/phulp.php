@@ -13,7 +13,7 @@ require 'styles.php';
 require 'others.php';
 
 $phulp->task('inject', function ($phulp) use ($config) {
-    $phulp->start(['scripts', 'styles']);
+    $phulp->start(['others', 'scripts', 'styles']);
 
     $injectStyles = $phulp->src(
         [$config['tmp'] . '/serve/app'],
@@ -31,10 +31,6 @@ $phulp->task('inject', function ($phulp) use ($config) {
     $phulp->src([$config['src'] . '/app'], '/\.html$/')
         ->pipe($phulp->dest($config['tmp'] . '/serve/app'));
 
-//   var injectOptions = {
-//     ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],
-//     addRootSlash: false
-//   };
 
     $filterFilename = function ($filename) {
         return 'app/' . ltrim($filename, '/');
@@ -48,13 +44,13 @@ $phulp->task('inject', function ($phulp) use ($config) {
             'distVendorPath' => $config['tmp'] . '/serve/vendor',
             'filter' => function ($distFile) {
                 $filename = $distFile->getRelativepath() . '/' . $distFile->getName();
-                if (preg_match('/^(?!angular-bootstrap|bootstrap-sass|jquery|angular-mocks|animate).*/', $filename)) {
+                if (preg_match('/^(?!bootstrap-sass|jquery|angular-mocks|animate).*/', $filename)) {
                     return true;
                 }
             },
             'injectOptions' => [
                 'filterFilename' => function ($filename) {
-                    return preg_replace('/src\/bower_components\//', 'app/vendor/', $filename);
+                    return 'vendor/' . $filename;
                 },
                 'starttag' => '<!-- bower:js -->',
                 'endtag' => '<!-- endbower -->',

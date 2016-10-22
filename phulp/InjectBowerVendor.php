@@ -46,12 +46,12 @@ class InjectBowerVendor implements \Phulp\PipeInterface
 
                     $realpath = realpath($filename);
                     $fullpath = substr($realpath, 0, strrpos($realpath, '/'));
-                    $fullpath = substr($realpath, 0, strrpos($realpath, '/'));
                     $relativepath = str_replace(
                         $this->options['bowerPath'],
                         null,
-                        $fullpath
+                        $filename
                     );
+                    $relativepath = ltrim(substr($relativepath, 0, strrpos($relativepath, '/')), '/');
                     $filename = substr($realpath, strrpos($realpath, '/') + 1);
 
                     $distFile = new \Phulp\DistFile(
@@ -79,7 +79,14 @@ class InjectBowerVendor implements \Phulp\PipeInterface
 
         $bowerDistFiles = new \Phulp\Collection($stack, \Phulp\DistFile::class);
 
-        foreach ($bowerDistFiles as $distFile) {
+        $srcBower = new \Phulp\Source([$this->options['bowerPath']]);
+        $srcBower->pipe(new Filter(function () {
+                return true;
+            }));
+        $srcBower->setDistFiles($bowerDistFiles);
+        $srcBower->pipe(new AngularFileSort);
+
+        foreach ($srcBower->getDistFiles() as $distFile) {
             $dir = $this->options['distVendorPath'];
 
             /** @var DistFile $distFile */

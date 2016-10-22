@@ -301,16 +301,16 @@
         },
         {
             "name": "reisraff/phulp",
-            "version": "1.7.0",
+            "version": "1.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reisraff/phulp.git",
-                "reference": "a19a9cfcf41f6b4113d287377916828a12c536f2"
+                "reference": "403727bfbb76ec82fe5bae33937498bcffe0509d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reisraff/phulp/zipball/a19a9cfcf41f6b4113d287377916828a12c536f2",
-                "reference": "a19a9cfcf41f6b4113d287377916828a12c536f2",
+                "url": "https://api.github.com/repos/reisraff/phulp/zipball/403727bfbb76ec82fe5bae33937498bcffe0509d",
+                "reference": "403727bfbb76ec82fe5bae33937498bcffe0509d",
                 "shasum": ""
             },
             "require": {
@@ -349,7 +349,7 @@
                 "php",
                 "phulp"
             ],
-            "time": "2016-10-22 03:52:48"
+            "time": "2016-10-22 13:30:55"
         },
         {
             "name": "reisraff/phulp-server",

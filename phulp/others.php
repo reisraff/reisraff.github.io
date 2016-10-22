@@ -5,5 +5,6 @@ $phulp->task('others', function ($phulp) use ($config) {
         [$config['src']],
         '/.+(?<!html|css|js|scss)$/'
     )
+        ->pipe($phulp->dest($config['tmp'] . '/serve'))
         ->pipe($phulp->dest($config['dist']));
 });
