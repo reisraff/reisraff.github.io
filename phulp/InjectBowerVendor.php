@@ -84,6 +84,9 @@ class InjectBowerVendor implements \Phulp\PipeInterface
                 return true;
             }));
         $srcBower->setDistFiles($bowerDistFiles);
+        $srcBower->pipe(new Filter(function ($distFile) {
+            return ! preg_match('/.*(?<!js)$/', $distFile->getName());
+        }));
         $srcBower->pipe(new AngularFileSort);
 
         foreach ($srcBower->getDistFiles() as $distFile) {

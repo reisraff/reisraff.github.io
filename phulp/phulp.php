@@ -44,7 +44,7 @@ $phulp->task('inject', function ($phulp) use ($config) {
             'distVendorPath' => $config['tmp'] . '/serve/vendor',
             'filter' => function ($distFile) {
                 $filename = $distFile->getRelativepath() . '/' . $distFile->getName();
-                if (preg_match('/^(?!bootstrap-sass|jquery|angular-mocks|animate).*/', $filename)) {
+                if (preg_match('/^(?!SHA-1|bootstrap-sass|jquery|angular-mocks|animate).*/', $filename)) {
                     return true;
                 }
             },
