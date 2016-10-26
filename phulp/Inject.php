@@ -192,7 +192,8 @@ class Inject implements \Phulp\PipeInterface
             );
         }
 
-        $name = $start ? 'inject' : 'endinject';
+        $tagname = $this->options['tagname'];
+        $name = $start ? $tagname : 'end' . $tagname;
 
         $tag = $this->tags[$ext];
         $tag = preg_replace('/{{name}}/', $name, $tag);

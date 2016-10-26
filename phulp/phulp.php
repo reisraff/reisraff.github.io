@@ -42,18 +42,17 @@ $phulp->task('inject', function ($phulp) use ($config) {
         ->pipe(new InjectBowerVendor([
             'bowerPath' => $config['bower_components'],
             'distVendorPath' => $config['tmp'] . '/serve/vendor',
-            'filter' => function ($distFile) {
-                $filename = $distFile->getRelativepath() . '/' . $distFile->getName();
-                if (preg_match('/^(?!SHA-1|bootstrap-sass|jquery|angular-mocks|animate).*/', $filename)) {
-                    return true;
-                }
-            },
+            // 'filter' => function ($distFile) {
+            //     $filename = $distFile->getRelativepath() . '/' . $distFile->getName();
+            //     if (preg_match('/^(?!SHA-1|angular-mocks|animate).*/', $filename)) {
+            //         return true;
+            //     }
+            // },
             'injectOptions' => [
                 'filterFilename' => function ($filename) {
                     return 'vendor/' . $filename;
                 },
-                'starttag' => '<!-- bower:js -->',
-                'endtag' => '<!-- endbower -->',
+                'tagname' => 'bower'
             ]
         ]))
         ->pipe($phulp->dest($config['tmp'] . '/serve'));

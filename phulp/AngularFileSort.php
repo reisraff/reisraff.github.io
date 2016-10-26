@@ -74,7 +74,7 @@ class AngularFileSort implements \Phulp\PipeInterface
     public function prepare(\Phulp\DistFile $distFile)
     {
         $matches = [];
-        $regex = '/(angularModule[ \n]*\([ \n]*[\'"]{1}ng[\'"]{1}|angular[ \n]*\.[ \n]*module[ \n]*\([ \n]*[\'"]{1}[a-zA-Z0-9\.-\/]+[\'"]{1}[ \n]*,[ \n]*\[|(?:global|root)\.[a-zA-Z][a-zA-Z](?:\w|\-)+\s+\=)/';
+        $regex = '/(angularModule[ \n]*\([ \n]*[\'"]{1}ng[\'"]{1}|angular[ \n]*\.[ \n]*module[ \n]*\([ \n]*[\'"]{1}[a-zA-Z0-9\.-\/]+[\'"]{1}[ \n]*,[ \n]*\[|(?:window|global|root)\.[a-zA-Z](?:\w|\-)+\s+\=)/';
 
         preg_match_all($regex, $distFile->getContent(), $matches);
 
@@ -130,7 +130,7 @@ class AngularFileSort implements \Phulp\PipeInterface
     public function getGlobalOrRootName($code)
     {
         return preg_replace(
-            '/.*(?:global|root)\.([a-zA-Z](?:\w|\-)+).*/s',
+            '/.*(?:window|global|root)\.([a-zA-Z](?:\w|\-)+).*/s',
             '$1',
             $code
         );
@@ -139,7 +139,7 @@ class AngularFileSort implements \Phulp\PipeInterface
     public function globalOrRoot($code)
     {
         return preg_match(
-            '/(global|root)\.[a-zA-Z]+/',
+            '/(?:window|global|root)\.[a-zA-Z](?:\w|\-)+\s+\=/',
             $code
         );
     }

@@ -9,9 +9,9 @@ class InjectBowerVendor implements \Phulp\PipeInterface
         'injectOptions' => []
     ];
 
-    public function __construct(array $options = null)
+    public function __construct(array $options = [])
     {
-        $this->options = array_merge($options, (array) $options);
+        $this->options = array_merge($this->options, $options);
     }
 
     public function execute(\Phulp\Source $src)
@@ -20,7 +20,8 @@ class InjectBowerVendor implements \Phulp\PipeInterface
             // error
         }
 
-        $stack = [];
+        $jsStack = [];
+        $cssStack = [];
         foreach ((new DirectoryIterator($this->options['bowerPath'])) as $item) {
             if ($item->isDir() && ! $item->isDot()) {
                 $file = $item->getPathname() . '/bower.json';
@@ -72,22 +73,28 @@ class InjectBowerVendor implements \Phulp\PipeInterface
                         }
                     }
 
-                    $stack[] = $distFile;
+                    if (preg_match('/js$/', $distFile->getName())) {
+                        $jsStack[] = $distFile;
+                    } elseif (preg_match('/(css|scss)$/', $distFile->getName())) {
+                        $cssStack[] = $distFile;
+                    }
                 }
             }
         }
 
-        $bowerDistFiles = new \Phulp\Collection($stack, \Phulp\DistFile::class);
+        $bowerDistFiles = new \Phulp\Collection($jsStack, \Phulp\DistFile::class);
 
         $srcBower = new \Phulp\Source([$this->options['bowerPath']]);
         $srcBower->pipe(new Filter(function () {
                 return true;
             }));
         $srcBower->setDistFiles($bowerDistFiles);
-        $srcBower->pipe(new Filter(function ($distFile) {
-            return ! preg_match('/.*(?<!js)$/', $distFile->getName());
-        }));
         $srcBower->pipe(new AngularFileSort);
+
+        foreach ($cssStack as $cssDistFile) {
+            $srcBower->addDistFile($cssDistFile);
+        }
+        $srcBower->pipe(new ScssCompiler()); // ['importPaths' => ['src/src/app/']]
 
         foreach ($srcBower->getDistFiles() as $distFile) {
             $dir = $this->options['distVendorPath'];
