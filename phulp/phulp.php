@@ -16,8 +16,8 @@ $phulp->task('inject', function ($phulp) use ($config) {
     $phulp->start(['others', 'scripts', 'styles']);
 
     $injectStyles = $phulp->src(
-        [$config['tmp'] . '/serve/app'],
-        '/.+(?<!' . str_replace('/', '\/', $config['tmp']) . '\/serve\/app\/vendor)\.css$/' // check it after
+        [$config['dist'] . '/app'],
+        '/.+(?<!' . str_replace('/', '\/', $config['dist']) . '\/app\/vendor)\.css$/' // check it after
     );
 
     $injectScripts = $phulp->src(
@@ -25,11 +25,11 @@ $phulp->task('inject', function ($phulp) use ($config) {
         '/.+(?<!spec|mock)\.js$/'
     )
         ->pipe(new AngularFileSort)
-        ->pipe($phulp->dest($config['tmp'] . '/serve/app'))
+        ->pipe($phulp->dest($config['dist'] . '/app'))
         ;
 
     $phulp->src([$config['src'] . '/app'], '/\.html$/')
-        ->pipe($phulp->dest($config['tmp'] . '/serve/app'));
+        ->pipe($phulp->dest($config['dist'] . '/app'));
 
 
     $filterFilename = function ($filename) {
@@ -41,13 +41,7 @@ $phulp->task('inject', function ($phulp) use ($config) {
         ->pipe(new Inject($injectScripts->getDistFiles(), ['filterFilename' => $filterFilename]))
         ->pipe(new InjectBowerVendor([
             'bowerPath' => $config['bower_components'],
-            'distVendorPath' => $config['tmp'] . '/serve/vendor',
-            // 'filter' => function ($distFile) {
-            //     $filename = $distFile->getRelativepath() . '/' . $distFile->getName();
-            //     if (preg_match('/^(?!SHA-1|angular-mocks|animate).*/', $filename)) {
-            //         return true;
-            //     }
-            // },
+            'distVendorPath' => $config['dist'] . '/vendor/',
             'injectOptions' => [
                 'filterFilename' => function ($filename) {
                     return 'vendor/' . $filename;
@@ -55,7 +49,7 @@ $phulp->task('inject', function ($phulp) use ($config) {
                 'tagname' => 'bower'
             ]
         ]))
-        ->pipe($phulp->dest($config['tmp'] . '/serve'));
+        ->pipe($phulp->dest($config['dist'] . '/'));
 });
 
 $phulp->task('partials', function ($phulp) use ($config) {
@@ -129,7 +123,8 @@ $phulp->task('clean', function ($phulp) use ($config) {
 });
 
 $phulp->task('build', function ($phulp) {
-    $phulp->start(['clean', 'html', 'fonts', 'others']);
+    // $phulp->start(['clean', 'html', 'fonts', 'others']);
+    $phulp->start(['clean', 'inject']); // it's just for now
 });
 
 $phulp->task('default', function ($phulp) {
@@ -139,23 +134,15 @@ $phulp->task('default', function ($phulp) {
 $phulp->task('watch', function ($phulp) use ($config) {
     $phulp->start(['clean', 'inject']);
 
-    if (! $path = realpath($config['tmp'] . '/serve')) {
+    if (! $path = realpath($config['dist'])) {
         \Phulp\Output::err(\Phulp\Output::colorize('The build wasn\'t sucessfully', 'red'));
         exit(1);
     }
 
-    $server1 = new \Phulp\Server\Server(
+    $server = new \Phulp\Server\Server(
         [
             'path' => $path,
             'port' => '8000'
-        ],
-        $phulp->getLoop()
-    );
-
-    $server2 = new \Phulp\Server\Server(
-        [
-            'path' => $path,
-            'port' => '8001'
         ],
         $phulp->getLoop()
     );

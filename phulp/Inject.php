@@ -99,14 +99,14 @@ class Inject implements \Phulp\PipeInterface
         ],
     ];
 
-    public function __construct(\Phulp\Collection $distFiles, array $options = null)
+    public function __construct(\Phulp\Collection $distFiles, array $options = [])
     {
         if ($distFiles->getType() !== \Phulp\DistFile::class) {
             throw new \Exception('message');
         }
 
         $this->distFiles = $distFiles;
-        $this->options = array_merge($this->options, (array) $options);
+        $this->options = array_merge($this->options, $options);
     }
 
     public function execute(\Phulp\Source $src)
@@ -127,14 +127,14 @@ class Inject implements \Phulp\PipeInterface
 
     private function prepare(\Phulp\DistFile $distFile)
     {
-        if ($ext = $this->getExt($distFile->getName())) {
+        if ($ext = $this->getExt($distFile->getDistpathname())) {
             $this->prepared[$ext][] = $distFile;
         }
     }
 
     private function inject(\Phulp\DistFile $distFile, array $prepared)
     {
-        $distExt = $this->getExt($distFile->getName());
+        $distExt = $this->getExt($distFile->getDistpathname());
 
         if (isset($this->tags[$distExt])) {
             foreach ($prepared as $ext => $item) {
@@ -210,7 +210,7 @@ class Inject implements \Phulp\PipeInterface
 
         $tag = $this->injections[$distExt][$ext];
 
-        $filename = $file->getRelativepath() . '/' . $file->getName();
+        $filename = $file->getDistpathname();
 
         $filter = $this->options['filterFilename'];
         if (is_callable($filter)) {

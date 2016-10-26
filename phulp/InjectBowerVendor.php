@@ -22,6 +22,7 @@ class InjectBowerVendor implements \Phulp\PipeInterface
 
         $jsStack = [];
         $cssStack = [];
+        $cssPaths = [];
         foreach ((new DirectoryIterator($this->options['bowerPath'])) as $item) {
             if ($item->isDir() && ! $item->isDot()) {
                 $file = $item->getPathname() . '/bower.json';
@@ -62,13 +63,12 @@ class InjectBowerVendor implements \Phulp\PipeInterface
                         $relativepath
                     );
 
-                    $filter = $this->options['filter'];
-                    if ($filter !== null) {
+                    if ($filter = $this->options['filter']) {
                         if (! is_callable($filter)) {
                             // error
                         }
 
-                        if (! $filter($distFile)) {
+                        if (! $filter($getDistpathname)) {
                             continue;
                         }
                     }
@@ -77,6 +77,11 @@ class InjectBowerVendor implements \Phulp\PipeInterface
                         $jsStack[] = $distFile;
                     } elseif (preg_match('/(css|scss)$/', $distFile->getName())) {
                         $cssStack[] = $distFile;
+                        $cssPaths[] = $item->getPathname() . '/' .
+                            substr(
+                                $distFile->getRelativePath(),
+                                strpos($distFile->getRelativePath(), '/') + 1)
+                            . '/';
                     }
                 }
             }
@@ -94,7 +99,7 @@ class InjectBowerVendor implements \Phulp\PipeInterface
         foreach ($cssStack as $cssDistFile) {
             $srcBower->addDistFile($cssDistFile);
         }
-        $srcBower->pipe(new ScssCompiler()); // ['importPaths' => ['src/src/app/']]
+        $srcBower->pipe(new ScssCompiler(['importPaths' => $cssPaths]));
 
         foreach ($srcBower->getDistFiles() as $distFile) {
             $dir = $this->options['distVendorPath'];
