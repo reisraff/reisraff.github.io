@@ -107,7 +107,7 @@ $phulp->task('dist', function ($phulp) use ($config) {
                 ]
             )
         )
-        // ->pipe(new Build(['dist_path' => $config['dist'] . '/dist']))
+        ->pipe(new Build(['dist_path' => $config['dist'] . '/dist']))
         // ->pipe(assets = $.useref.assets())
         // ->pipe($.rev())
         // ->pipe(jsFilter)
