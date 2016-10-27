@@ -1,5 +1,8 @@
 <?php
 
+use Phulp\ScssCompiler\ScssCompiler;
+use Phulp\Inject\Inject;
+
 class InjectBowerVendor implements \Phulp\PipeInterface
 {
     private $options = [

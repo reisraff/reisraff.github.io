@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "333061b443c188fce20eb932f90484e9",
-    "content-hash": "6910c15b5bbbc33fa81af9dab2f86191",
+    "hash": "15e514360b8e0886b4e029777db0aecd",
+    "content-hash": "8e40198398cdd9088a2cac591cf71742",
     "packages": [
         {
             "name": "beelab/bowerphp",
@@ -441,6 +441,111 @@
             "time": "2016-09-11 01:34:11"
         },
         {
+            "name": "matthiasmullie/minify",
+            "version": "1.3.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthiasmullie/minify.git",
+                "reference": "de4bcf23b6a3291bd828ce800aab834304eb50c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/de4bcf23b6a3291bd828ce800aab834304eb50c5",
+                "reference": "de4bcf23b6a3291bd828ce800aab834304eb50c5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "matthiasmullie/path-converter": "~1.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "matthiasmullie/scrapbook": "~1.0",
+                "phpunit/phpunit": "~4.8"
+            },
+            "bin": [
+                "bin/minifycss",
+                "bin/minifyjs"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MatthiasMullie\\Minify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Mullie",
+                    "email": "minify@mullie.eu",
+                    "homepage": "http://www.mullie.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CSS & JS minifier",
+            "homepage": "http://www.minifier.org",
+            "keywords": [
+                "JS",
+                "css",
+                "javascript",
+                "minifier",
+                "minify"
+            ],
+            "time": "2016-10-13 11:49:22"
+        },
+        {
+            "name": "matthiasmullie/path-converter",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matthiasmullie/path-converter.git",
+                "reference": "7c36e5cafa95dd20008d19b153b506cffa8c2848"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matthiasmullie/path-converter/zipball/7c36e5cafa95dd20008d19b153b506cffa8c2848",
+                "reference": "7c36e5cafa95dd20008d19b153b506cffa8c2848",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MatthiasMullie\\PathConverter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Mullie",
+                    "email": "pathconverter@mullie.eu",
+                    "homepage": "http://www.mullie.eu",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Relative path converter",
+            "homepage": "http://github.com/matthiasmullie/path-converter",
+            "keywords": [
+                "converter",
+                "path",
+                "paths",
+                "relative"
+            ],
+            "time": "2016-04-27 10:38:05"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.2",
             "source": {
@@ -667,23 +772,152 @@
             "time": "2016-10-22 13:30:55"
         },
         {
-            "name": "reisraff/phulp-server",
-            "version": "dev-master",
+            "name": "reisraff/phulp-inject",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/reisraff/phulp-server.git",
-                "reference": "3d9f7d24e7767d12722b5f56eccd0857bd87f020"
+                "url": "https://github.com/reisraff/phulp-inject.git",
+                "reference": "6c9ae980765ab5c74114c2c806e2fbc51ccd108e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reisraff/phulp-server/zipball/3d9f7d24e7767d12722b5f56eccd0857bd87f020",
-                "reference": "3d9f7d24e7767d12722b5f56eccd0857bd87f020",
+                "url": "https://api.github.com/repos/reisraff/phulp-inject/zipball/6c9ae980765ab5c74114c2c806e2fbc51ccd108e",
+                "reference": "6c9ae980765ab5c74114c2c806e2fbc51ccd108e",
+                "shasum": ""
+            },
+            "require": {
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\Inject\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The inject addon for phulp",
+            "keywords": [
+                "inject",
+                "php",
+                "phulp",
+                "phulpplugin"
+            ],
+            "time": "2016-10-27 18:37:26"
+        },
+        {
+            "name": "reisraff/phulp-minifier",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-minifier.git",
+                "reference": "5b8870447c518b3fdf3cb69f8dc37ccf8e9d36ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-minifier/zipball/5b8870447c518b3fdf3cb69f8dc37ccf8e9d36ca",
+                "reference": "5b8870447c518b3fdf3cb69f8dc37ccf8e9d36ca",
+                "shasum": ""
+            },
+            "require": {
+                "matthiasmullie/minify": "^1.3",
+                "php": ">=5.6",
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\Minifier\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The minifier addon for phulp",
+            "keywords": [
+                "minifier",
+                "php",
+                "phulp",
+                "phulpplugin"
+            ],
+            "time": "2016-10-27 17:15:18"
+        },
+        {
+            "name": "reisraff/phulp-scss-compiler",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-scss-compiler.git",
+                "reference": "1bafd0f69c7a78675262e3766e2cfe2094e11fef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-scss-compiler/zipball/1bafd0f69c7a78675262e3766e2cfe2094e11fef",
+                "reference": "1bafd0f69c7a78675262e3766e2cfe2094e11fef",
+                "shasum": ""
+            },
+            "require": {
+                "leafo/scssphp": "^0.6.6",
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\ScssCompiler\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The scss-compiler addon for phulp",
+            "keywords": [
+                "php",
+                "phulp",
+                "phulpplugin",
+                "scss-compiler"
+            ],
+            "time": "2016-10-27 18:17:41"
+        },
+        {
+            "name": "reisraff/phulp-server",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-server.git",
+                "reference": "ba43139a320fdad6b331cecb7b508cc867bf57c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-server/zipball/ba43139a320fdad6b331cecb7b508cc867bf57c9",
+                "reference": "ba43139a320fdad6b331cecb7b508cc867bf57c9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.6",
                 "react/child-process": "~0.4",
-                "reisraff/phulp": "~1.4"
+                "reisraff/phulp": "~1.7"
             },
             "type": "library",
             "autoload": {
@@ -705,22 +939,23 @@
             "keywords": [
                 "php",
                 "phulp",
+                "phulpplugin",
                 "server"
             ],
-            "time": "2016-10-20 14:06:05"
+            "time": "2016-10-27 17:35:37"
         },
         {
             "name": "symfony/console",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6cb0872fb57b38b3b09ff213c21ed693956b9eb0"
+                "reference": "c99da1119ae61e15de0e4829196b9fba6f73d065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/6cb0872fb57b38b3b09ff213c21ed693956b9eb0",
-                "reference": "6cb0872fb57b38b3b09ff213c21ed693956b9eb0",
+                "url": "https://api.github.com/repos/symfony/console/zipball/c99da1119ae61e15de0e4829196b9fba6f73d065",
+                "reference": "c99da1119ae61e15de0e4829196b9fba6f73d065",
                 "shasum": ""
             },
             "require": {
@@ -768,11 +1003,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-28 00:11:12"
+            "time": "2016-10-06 01:44:51"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -829,16 +1064,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.12",
+            "version": "v2.8.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "889983a79a043dfda68f38c38b6dba092dd49cd8"
+                "reference": "25c576abd4e0f212e678fe8b2bd9a9a98c7ea934"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/889983a79a043dfda68f38c38b6dba092dd49cd8",
-                "reference": "889983a79a043dfda68f38c38b6dba092dd49cd8",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/25c576abd4e0f212e678fe8b2bd9a9a98c7ea934",
+                "reference": "25c576abd4e0f212e678fe8b2bd9a9a98c7ea934",
                 "shasum": ""
             },
             "require": {
@@ -885,20 +1120,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-28 16:56:28"
+            "time": "2016-10-13 01:43:15"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "682fd8fdb3135fdf05fc496a01579ccf6c85c0e5"
+                "reference": "0565b61bf098cb4dc09f4f103f033138ae4f42c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/682fd8fdb3135fdf05fc496a01579ccf6c85c0e5",
-                "reference": "682fd8fdb3135fdf05fc496a01579ccf6c85c0e5",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/0565b61bf098cb4dc09f4f103f033138ae4f42c6",
+                "reference": "0565b61bf098cb4dc09f4f103f033138ae4f42c6",
                 "shasum": ""
             },
             "require": {
@@ -934,11 +1169,11 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-14 00:18:46"
+            "time": "2016-10-18 04:30:12"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -1046,7 +1281,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -1149,9 +1384,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "reisraff/phulp-server": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

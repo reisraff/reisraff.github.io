@@ -8,5 +8,5 @@ $phulp->task('fonts', function ($phulp) use ($config) {
         ->pipe($phulp->iterate(function ($distFile) {
             $distFile->setDistpathname($distFile->getName());
         }))
-        ->pipe($phulp->dest($config['dist'] . '/fonts'));
+        ->pipe($phulp->dest($config['tmp'] . '/fonts'));
 });
