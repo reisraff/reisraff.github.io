@@ -83,7 +83,7 @@ class AngularFileSort implements \Phulp\PipeInterface
                 if ($this->isNg($stm)) {
                     $moduleName = 'angular';
                     $this->stack['angular'] = [
-                        'filename' => $distFile->getRelativepath() . DIRECTORY_SEPARATOR . $distFile->getName(),
+                        'filename' => $distFile->getDistpathname(),
                         'distFile' => $distFile,
                         'dependencies' => [], // @todo
                     ];
@@ -91,7 +91,7 @@ class AngularFileSort implements \Phulp\PipeInterface
                 } else if ($this->isModule($stm)) {
                     $moduleName = $this->getModuleName($stm);
                     $this->stack[$moduleName] = [
-                        'filename' => $distFile->getRelativepath() . DIRECTORY_SEPARATOR . $distFile->getName(),
+                        'filename' => $distFile->getDistpathname(),
                         'distFile' => $distFile,
                         'dependencies' => array_merge(
                             $this->getModuleDependencies($stm, $distFile->getContent()),
@@ -102,7 +102,7 @@ class AngularFileSort implements \Phulp\PipeInterface
                 } elseif ($this->globalOrRoot($stm)) {
                     $scriptName = $this->getGlobalOrRootName($stm);
                     $this->stack[$scriptName] = [
-                        'filename' => $distFile->getRelativepath() . DIRECTORY_SEPARATOR . $distFile->getName(),
+                        'filename' => $distFile->getDistpathname(),
                         'distFile' => $distFile,
                         'dependencies' => [], // @todo
                     ];

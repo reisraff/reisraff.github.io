@@ -2,6 +2,8 @@
 
 use Phulp\ScssCompiler\ScssCompiler;
 use Phulp\Inject\Inject;
+use Phulp\Filter\Filter;
+use Phulp\Dest\Dest;
 
 class InjectBowerVendor implements \Phulp\PipeInterface
 {
@@ -94,36 +96,17 @@ class InjectBowerVendor implements \Phulp\PipeInterface
 
         $srcBower = new \Phulp\Source([$this->options['bowerPath']]);
         $srcBower->pipe(new Filter(function () {
-                return true;
-            }));
+            return true;
+        }));
         $srcBower->setDistFiles($bowerDistFiles);
         $srcBower->pipe(new AngularFileSort);
 
         foreach ($cssStack as $cssDistFile) {
             $srcBower->addDistFile($cssDistFile);
         }
-        $srcBower->pipe(new ScssCompiler(['importPaths' => $cssPaths]));
 
-        foreach ($srcBower->getDistFiles() as $distFile) {
-            $dir = $this->options['distVendorPath'];
-
-            /** @var DistFile $distFile */
-            $filename = $distFile->getDistpathname();
-            $dsPos = strrpos($filename, DIRECTORY_SEPARATOR);
-
-            if ($dsPos) {
-                $dir .= DIRECTORY_SEPARATOR . substr($filename, 0, $dsPos);
-            }
-
-            if (!file_exists($dir)) {
-                mkdir($dir, 0777, true);
-            }
-
-            file_put_contents(
-                $this->options['distVendorPath'] . DIRECTORY_SEPARATOR . $filename,
-                $distFile->getContent()
-            );
-        }
+        $srcBower->pipe(new ScssCompiler(['import_paths' => $cssPaths]))
+            ->pipe(new Dest($this->options['distVendorPath']));
 
         (new Inject($bowerDistFiles, $this->options['injectOptions']))->execute($src);
     }

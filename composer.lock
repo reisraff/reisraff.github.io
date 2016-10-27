@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "15e514360b8e0886b4e029777db0aecd",
-    "content-hash": "8e40198398cdd9088a2cac591cf71742",
+    "hash": "abe444e813459dbc7e661a7cc515a5dc",
+    "content-hash": "1f83dc2dc315af85f0c8be0ca317ac0c",
     "packages": [
         {
             "name": "beelab/bowerphp",
@@ -770,6 +770,90 @@
                 "phulp"
             ],
             "time": "2016-10-22 13:30:55"
+        },
+        {
+            "name": "reisraff/phulp-dest",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-dest.git",
+                "reference": "bccb478fe62122f6bb321d203416183e3640a293"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-dest/zipball/bccb478fe62122f6bb321d203416183e3640a293",
+                "reference": "bccb478fe62122f6bb321d203416183e3640a293",
+                "shasum": ""
+            },
+            "require": {
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\Dest\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The dest addon for phulp",
+            "keywords": [
+                "dest",
+                "php",
+                "phulp",
+                "phulpplugin"
+            ],
+            "time": "2016-10-27 19:38:53"
+        },
+        {
+            "name": "reisraff/phulp-filter",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-filter.git",
+                "reference": "2a135892e3a29078842884fb44cc2e4d15a6c9fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-filter/zipball/2a135892e3a29078842884fb44cc2e4d15a6c9fb",
+                "reference": "2a135892e3a29078842884fb44cc2e4d15a6c9fb",
+                "shasum": ""
+            },
+            "require": {
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\Filter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The filter addon for phulp",
+            "keywords": [
+                "filter",
+                "php",
+                "phulp",
+                "phulpplugin"
+            ],
+            "time": "2016-10-27 19:25:36"
         },
         {
             "name": "reisraff/phulp-inject",

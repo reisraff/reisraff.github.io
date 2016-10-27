@@ -1,6 +1,7 @@
 <?php
 
 use Phulp\Minifier\JsMinifier;
+use Phulp\Dest\Dest;
 
 class Build implements \Phulp\PipeInterface
 {
@@ -60,29 +61,8 @@ class Build implements \Phulp\PipeInterface
                     return true;
                 }));
                 $src->addDistFile($distFile);
-                $src->pipe(new JsMinifier);
-
-                foreach ($src->getDistFiles() as $distFile) {
-                    $dir = $this->options['dist_path'];
-
-                    /** @var DistFile $distFile */
-                    $filename = $distFile->getDistpathname();
-                    $dsPos = strrpos($filename, DIRECTORY_SEPARATOR);
-
-                    if ($dsPos) {
-                        $dir .= DIRECTORY_SEPARATOR . substr($filename, 0, $dsPos);
-                    }
-
-                    if (!file_exists($dir)) {
-                        mkdir($dir, 0777, true);
-                    }
-
-                    file_put_contents(
-                        $this->options['dist_path'] . DIRECTORY_SEPARATOR . $filename,
-                        $distFile->getContent()
-                    );
-                }
-
+                $src->pipe(new JsMinifier)
+                    ->pipe(new Dest($this->options['dist_path']));
             }
 
             if ($ext == 'css') {

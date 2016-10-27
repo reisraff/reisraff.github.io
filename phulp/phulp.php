@@ -4,7 +4,6 @@ $config = require 'config.php';
 
 require 'AngularFileSort.php';
 require 'AngularTemplateCache.php';
-require 'Filter.php';
 require 'InjectBowerVendor.php';
 require 'Build.php';
 require 'scripts.php';
