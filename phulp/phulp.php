@@ -172,21 +172,26 @@ $phulp->task('serve:dist', function ($phulp) use ($config) {
     );
 });
 
-$phulp->task('clean', function ($phulp) use ($config) {
-    $phulp->src([$config['dist'], $config['tmp']])
+$phulp->task('clean-dist', function ($phulp) use ($config) {
+    $phulp->src([$config['dist']])
+        ->pipe($phulp->clean());
+});
+
+$phulp->task('clean-tmp', function ($phulp) use ($config) {
+    $phulp->src([$config['tmp']])
         ->pipe($phulp->clean());
 });
 
 $phulp->task('build', function ($phulp) {
-    $phulp->start(['clean', 'dist']);
+    $phulp->start(['clean-tmp', 'clean-dist', 'dist']);
 });
 
 $phulp->task('default', function ($phulp) {
     $phulp->start(['build']);
 });
 
-$phulp->task('watch', function ($phulp) use ($config) {
-    $phulp->start(['clean', 'inject']);
+$phulp->task('serve', function ($phulp) use ($config) {
+    $phulp->start(['clean-tmp', 'inject']);
 
     if (! $path = realpath($config['tmp'])) {
         \Phulp\Output::err(\Phulp\Output::colorize('The build wasn\'t sucessfully', 'red'));
