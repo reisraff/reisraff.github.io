@@ -9,16 +9,17 @@ require 'Build.php';
 require 'scripts.php';
 require 'styles.php';
 require 'others.php';
+require 'fonts.php';
 require 'htmls.php';
 
 use Phulp\Inject\Inject;
 
 $phulp->task('inject', function ($phulp) use ($config) {
-    $phulp->start(['others', 'scripts', 'styles', 'htmls']);
+    $phulp->start(['others', 'fonts', 'scripts', 'styles', 'htmls']);
 
     $injectStyles = $phulp->src(
         [$config['tmp'] . '/app'],
-        '/.+(?<!' . str_replace('/', '\/', $config['tmp']) . '\/serve\/app\/vendor)\.css$/' // check it after
+        '/.css$/'
     );
 
     $injectScripts = $phulp->src(
@@ -34,13 +35,13 @@ $phulp->task('inject', function ($phulp) use ($config) {
     };
 
     $phulp->src([$config['src']], '/html$/', false)
-        ->pipe(new Inject($injectStyles->getDistFiles(), ['filterFilename' => $filterFilename]))
-        ->pipe(new Inject($injectScripts->getDistFiles(), ['filterFilename' => $filterFilename]))
+        ->pipe(new Inject($injectStyles->getDistFiles(), ['filter_filename' => $filterFilename]))
+        ->pipe(new Inject($injectScripts->getDistFiles(), ['filter_filename' => $filterFilename]))
         ->pipe(new InjectBowerVendor([
             'bowerPath' => $config['bower_components'],
             'distVendorPath' => $config['tmp'] . '/vendor/',
             'injectOptions' => [
-                'filterFilename' => function ($filename) {
+                'filter_filename' => function ($filename) {
                     return 'vendor/' . $filename;
                 },
                 'tagname' => 'bower'
@@ -72,6 +73,11 @@ $phulp->task('partials', function ($phulp) use ($config) {
 $phulp->task('dist', function ($phulp) use ($config) {
     $phulp->start(['inject', 'partials']);
 
+    $phulp->src([$config['tmp'] . '/assets'])
+        ->pipe($phulp->dest($config['dist'] . '/assets'));
+    $phulp->src([$config['tmp'] . '/fonts'])
+        ->pipe($phulp->dest($config['dist'] . '/fonts'));
+
     $partialsInjectFile = $phulp->src(
         [$config['tmp']],
         '/templateCacheHtml\.js$/',
@@ -83,22 +89,6 @@ $phulp->task('dist', function ($phulp) use ($config) {
         '/html$/',
         false
     )
-        // ->pipe($phulp->iterate(function ($distFile) {
-        //     $distFile->setContent(
-        //         preg_replace(
-        //             '/\<\!\-\-(.+?)\-\-\>/',
-        //             null,
-        //             $distFile->getContent()
-        //         )
-        //     );
-        //     $distFile->setContent(
-        //         preg_replace(
-        //             ['/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s'],
-        //             ['>', '<', '\\1'],
-        //             $distFile->getContent()
-        //         )
-        //     );
-        // }))
         ->pipe(
             new Inject(
                 $partialsInjectFile->getDistFiles(),
@@ -107,31 +97,79 @@ $phulp->task('dist', function ($phulp) use ($config) {
                 ]
             )
         )
-        ->pipe(new Build(['dist_path' => $config['dist'] . '/dist']))
-        // ->pipe(assets = $.useref.assets())
-        // ->pipe($.rev())
-        // ->pipe(jsFilter)
-        // ->pipe($.ngAnnotate())
-        // ->pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
-        // ->pipe(jsFilter.restore)
-        // ->pipe(cssFilter)
-        // ->pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
-        // ->pipe($.minifyCss({ processImport: false }))
-        // ->pipe(cssFilter.restore)
-        // ->pipe(assets.restore())
-        // ->pipe($.useref())
-        // ->pipe($.revReplace())
-        // ->pipe(htmlFilter)
-        // ->pipe($.minifyHtml({
-            // empty: true,
-            // spare: true,
-            // quotes: true,
-            // conditionals: true
-        // }))
-        // ->pipe(htmlFilter.restore)
-        ->pipe($phulp->dest($config['dist']))
-        // ->pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
-        ;
+        ->pipe(new Build(['dist_path' => $config['dist']]))
+        ->pipe($phulp->iterate(function ($distFile) {
+            $distFile->setContent(
+                preg_replace(
+                    '/\<\!\-\-(.+?)\-\-\>/',
+                    null,
+                    $distFile->getContent()
+                )
+            );
+            $distFile->setContent(
+                preg_replace(
+                    ['/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s'],
+                    ['>', '<', '\\1'],
+                    $distFile->getContent()
+                )
+            );
+        }))
+        ->pipe($phulp->dest('./'));
+
+    $phulp->src(
+        [$config['dist'] . '/scripts'],
+        '/app\.js$/',
+        false
+    )
+        ->pipe($phulp->iterate(function ($distFile) {
+            $distFile->setContent(
+                str_replace('assets/', 'dist/assets/', $distFile->getContent())
+            );
+        }))
+        ->pipe($phulp->dest($config['dist'] . '/scripts'));
+
+    $phulp->src(
+        [$config['dist'] . '/styles'],
+        '/vendor\.css$/',
+        false
+    )
+        ->pipe($phulp->iterate(function ($distFile) {
+            $distFile->setContent(
+                str_replace('../fonts/bootstrap/', '../fonts/', $distFile->getContent())
+            );
+        }))
+        ->pipe($phulp->dest($config['dist'] . '/styles'));
+
+    $phulp->src(
+        [$config['dist'] . '/assets/posts/post'],
+        '/md$/',
+        false
+    )
+        ->pipe($phulp->iterate(function ($distFile) {
+            $distFile->setContent(
+                str_replace('(assets/', '(dist/assets/', $distFile->getContent())
+            );
+        }))
+        ->pipe($phulp->dest($config['dist'] . '/assets/posts/post'));
+
+    $phulp->src(
+        [$config['tmp']],
+        '/ico$/',
+        false
+    )
+        ->pipe($phulp->dest($config['dist']));
+});
+
+$phulp->task('serve:dist', function ($phulp) use ($config) {
+    $phulp->start(['build']);
+
+    $server = new \Phulp\Server\Server(
+        [
+            'path' => realpath($config['dist'] . '/..'),
+            'port' => '8000'
+        ],
+        $phulp->getLoop()
+    );
 });
 
 $phulp->task('clean', function ($phulp) use ($config) {

@@ -21,6 +21,7 @@
         "reisraff/phulp-dest": "^1.0"
     },
     "config": {
-        "bin-dir" : "bin/"
+        "bin-dir" : "bin/",
+        "preferred-install": "source"
     }
 }

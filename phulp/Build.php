@@ -1,5 +1,8 @@
 <?php
 
+use Phulp\Collection;
+use Phulp\DistFile;
+use Phulp\Source;
 use Phulp\Minifier\JsMinifier;
 use Phulp\Minifier\CssMinifier;
 use Phulp\Filter\Filter;
@@ -16,14 +19,14 @@ class Build implements \Phulp\PipeInterface
         $this->options = array_merge($this->options, $options);
     }
 
-    public function execute(\Phulp\Source $src)
+    public function execute(Source $src)
     {
         foreach ($src->getDistFiles() as $distFile) {
             $this->process($distFile);
         }
     }
 
-    private function process(\Phulp\DistFile $distFile)
+    private function process(DistFile $distFile)
     {
         $root = $distFile->getBasepath();
 
@@ -40,31 +43,43 @@ class Build implements \Phulp\PipeInterface
             $dest = preg_replace('/.*build:[a-zA-Z0-9]+\s*([a-zA-Z0-9\/-_\.]+).*/s', '$1', $match);
 
             if ($ext == 'js') {
-                // $scripts = [];
+                $scripts = [];
 
-                // preg_match_all('/src=[\"\'](.*?)[\"\']/s', $match, $scripts);
-                // $scripts = $scripts[1];
+                preg_match_all('/src=[\"\'](.*?)[\"\']/s', $match, $scripts);
+                $scripts = $scripts[1];
 
-                // $finalContent = null;
+                $jsDistFiles = new Collection([], DistFile::class);
 
-                // foreach ($scripts as $script) {
-                //     $finalContent .= file_get_contents($root . '/' . $script);
-                // }
+                foreach ($scripts as $script) {
+                    $jsDistFiles->add(
+                        new DistFile(
+                            file_get_contents($root . '/' . $script),
+                            'dummy.js'
+                        )
+                    );
+                }
 
-                // echo PHP_EOL . PHP_EOL . PHP_EOL . $finalContent . PHP_EOL;
+                $src = new \Phulp\Source([__DIR__]);
+                $src->pipe(new Filter(function () {
+                    return true;
+                }));
+                $src->setDistFiles($jsDistFiles);
+                $src->pipe(new JsMinifier(['join' => true]));
+                $jsDistFile = $src->getDistFiles()->first();
+                $jsDistFile->setDistpathname($dest);
+                $src->pipe(new Dest($this->options['dist_path']));
 
-                // $distFile = new \Phulp\DistFile(
-                //     $finalContent
-                // );
-                // $distFile->setDistpathname($dest);
-
-                // $src = new \Phulp\Source([$this->options['dist_path']]);
-                // $src->pipe(new Filter(function () {
-                //     return true;
-                // }));
-                // $src->addDistFile($distFile);
-                // $src->pipe(new JsMinifier)
-                //     ->pipe(new Dest($this->options['dist_path']));
+                $distFile->setContent(
+                    str_replace(
+                        $match,
+                        '<script src="'
+                        . $this->options['dist_path']
+                        . DIRECTORY_SEPARATOR
+                        . $jsDistFile->getDistpathname()
+                        . '"></script>',
+                        $distFile->getContent()
+                    )
+                );
             }
 
             if ($ext == 'css') {
@@ -73,26 +88,38 @@ class Build implements \Phulp\PipeInterface
                 preg_match_all('/href=[\"\'](.*?)[\"\']/s', $match, $scripts);
                 $scripts = $scripts[1];
 
-                $finalContent = null;
+                $cssDistFiles = new Collection([], DistFile::class);
 
                 foreach ($scripts as $script) {
-                    $finalContent .= file_get_contents($root . '/' . $script);
+                    $cssDistFiles->add(
+                        new DistFile(
+                            file_get_contents($root . '/' . $script),
+                            'dummy.css'
+                        )
+                    );
                 }
 
-                // echo PHP_EOL . PHP_EOL . PHP_EOL . $finalContent . PHP_EOL;
-
-                $distFile = new \Phulp\DistFile(
-                    $finalContent
-                );
-                $distFile->setDistpathname($dest);
-
-                $src = new \Phulp\Source([$this->options['dist_path']]);
+                $src = new \Phulp\Source([__DIR__]);
                 $src->pipe(new Filter(function () {
                     return true;
                 }));
-                $src->addDistFile($distFile);
-                $src->pipe(new CssMinifier)
-                    ->pipe(new Dest($this->options['dist_path']));
+                $src->setDistFiles($cssDistFiles);
+                $src->pipe(new CssMinifier(['join' => true]));
+                $cssDistFile = $src->getDistFiles()->first();
+                $cssDistFile->setDistpathname($dest);
+                $src->pipe(new Dest($this->options['dist_path']));
+
+                $distFile->setContent(
+                    str_replace(
+                        $match,
+                        '<link rel="stylesheet" href="'
+                        . $this->options['dist_path']
+                        . DIRECTORY_SEPARATOR
+                        . $cssDistFile->getDistpathname()
+                        . '">',
+                        $distFile->getContent()
+                    )
+                );
             }
         }
     }
