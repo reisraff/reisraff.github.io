@@ -2,8 +2,6 @@
 
 $config = require 'config.php';
 
-require 'AngularFileSort.php';
-require 'AngularTemplateCache.php';
 require 'InjectBowerVendor.php';
 require 'Build.php';
 require 'scripts.php';
@@ -13,6 +11,8 @@ require 'fonts.php';
 require 'htmls.php';
 
 use Phulp\Inject\Inject;
+use Phulp\AngularFileSort\AngularFileSort;
+use Phulp\AngularTemplateCache\AngularTemplateCache;
 
 $phulp->task('inject', function ($phulp) use ($config) {
     $phulp->start(['others', 'fonts', 'scripts', 'styles', 'htmls']);

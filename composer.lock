@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9caaa967a44dcdc41f95151cef4b2b0b",
-    "content-hash": "1f83dc2dc315af85f0c8be0ca317ac0c",
+    "hash": "f854658e069ad7ec9ba3cbfea5176a4a",
+    "content-hash": "f821e190bfadd050fc352883ba9a4743",
     "packages": [
         {
             "name": "beelab/bowerphp",
@@ -770,6 +770,92 @@
                 "phulp"
             ],
             "time": "2016-10-22 13:30:55"
+        },
+        {
+            "name": "reisraff/phulp-angular-filesort",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-angular-filesort.git",
+                "reference": "93bc81e92e8a65b8f3c820d0cc6af2d487b01854"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-angular-filesort/zipball/93bc81e92e8a65b8f3c820d0cc6af2d487b01854",
+                "reference": "93bc81e92e8a65b8f3c820d0cc6af2d487b01854",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\AngularFileSort\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The angular-filesort addon for phulp",
+            "keywords": [
+                "angular-filesort",
+                "php",
+                "phulp",
+                "phulpplugin"
+            ],
+            "time": "2016-11-21 19:04:21"
+        },
+        {
+            "name": "reisraff/phulp-angular-template-cache",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reisraff/phulp-angular-template-cache.git",
+                "reference": "f5e34479de15f9cdf1ae1d954ae1fe505c405a3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reisraff/phulp-angular-template-cache/zipball/f5e34479de15f9cdf1ae1d954ae1fe505c405a3c",
+                "reference": "f5e34479de15f9cdf1ae1d954ae1fe505c405a3c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "reisraff/phulp": "~1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Phulp\\AngularTemplateCache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rafael Reis",
+                    "email": "reisraff@gmail.com"
+                }
+            ],
+            "description": "The angular-template-cache addon for phulp",
+            "keywords": [
+                "angular-template-cache",
+                "php",
+                "phulp",
+                "phulpplugin"
+            ],
+            "time": "2016-11-21 19:06:50"
         },
         {
             "name": "reisraff/phulp-dest",
