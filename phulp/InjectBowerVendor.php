@@ -1,5 +1,6 @@
 <?php
 
+use Phulp\AngularFileSort\AngularFileSort;
 use Phulp\ScssCompiler\ScssCompiler;
 use Phulp\Inject\Inject;
 use Phulp\Filter\Filter;
