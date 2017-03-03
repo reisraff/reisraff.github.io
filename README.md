@@ -12,5 +12,5 @@ bin/phulp serve
 # Build
 
 ```bash
-bin/phulp serve
+bin/phulp build
 ```
