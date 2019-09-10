@@ -30,7 +30,9 @@
 
           <div class="spacing columns">
             <div class="column is-paddingless">
-              <a href="javascript://" @click="showAdvanced = !showAdvanced">ADVANCED</a>
+              <a href="javascript://" @click="showAdvanced = !showAdvanced">
+                {{showAdvanced ? 'SHOW LESS' : 'ADVANCED'}}
+              </a>
             </div>
             <div class="column is-paddingless">
               <a class="button is-pulled-right has-background-blue" href="javascript://" @click="reload()">RELOAD</a>
