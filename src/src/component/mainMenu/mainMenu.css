@@ -1,9 +1,14 @@
+.main-menu-separator {
+  margin: 0;
+  padding: 0;
+}
+
 .main-menu-item {
-  margin: 12px 8px;
   font-weight: bold;
   color: hsl(0, 0%, 96%);
 }
 
-.main-menu-item:hover {
-  color: hsl(0, 0%, 86%);
+.main-menu-item:hover, .main-menu-item:focus, .main-menu-item:focus-within, .main-menu-item.is-active {
+  color: hsl(0, 0%, 86%) !important;
+  background: hsl(0, 0%, 29%) !important;
 }

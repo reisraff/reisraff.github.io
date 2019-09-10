@@ -6,14 +6,16 @@
       <div class="container">
           <mainMenu></mainMenu>
 
-          <section>
+          <div class="section">
             <div class="userpic"></div>
-          </section>
+          </div>
       </div>
     </div>
     <div class='hero-footer'>
       <div class="container">
-        <section class="badge" id="badge"></section>
+        <a href="https://www.hackthebox.eu/profile/79586" target="_blank">
+          <div class="badge" id="badge"></div>
+        </a>
       </div>
     </div>
   </div>

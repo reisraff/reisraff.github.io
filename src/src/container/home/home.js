@@ -11,7 +11,7 @@ export default {
   components: {
     mainMenu
   },
-  mounted : function () {
+  mounted: function () {
     var el = document.getElementById('badge');
 
     postscribe(el, '<\script src="https://www.hackthebox.eu/badge/79586"></\script>', {
