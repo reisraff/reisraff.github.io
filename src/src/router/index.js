@@ -3,9 +3,9 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const Index = () => import('containers/index/index.vue')
-const Home = () => import('containers/home/home.vue')
-const NotFound = () => import('containers/notFound/notFound.vue')
+const Index = () => import('container/index/index.vue')
+const Home = () => import('container/home/home.vue')
+const NotFound = () => import('container/notFound/notFound.vue')
 
 // application routes
 const routes = [

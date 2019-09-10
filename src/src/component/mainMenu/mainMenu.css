@@ -1,0 +1,9 @@
+.main-menu-item {
+  margin: 12px 8px;
+  font-weight: bold;
+  color: hsl(0, 0%, 96%);
+}
+
+.main-menu-item:hover {
+  color: hsl(0, 0%, 86%);
+}
