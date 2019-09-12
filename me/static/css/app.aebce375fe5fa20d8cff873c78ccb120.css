@@ -10605,5 +10605,19 @@ label.panel-block:hover {
   -ms-flex-align: normal !important;
       align-items: normal !important;
 }
+a {
+  color: hsl(141, 71%, 48%);
+}
+a:hover {
+  color: hsl(48, 100%, 67%);
+}
+strong {
+  color: #fff;
+}
+p {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
 
-/*# sourceMappingURL=app.b4b2404158f7a0f6a1b059b96d70f895.css.map*/
+
+/*# sourceMappingURL=app.aebce375fe5fa20d8cff873c78ccb120.css.map*/

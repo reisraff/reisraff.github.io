@@ -1,1 +1,27 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><title>Rafael Reis</title><link href=/me/static/css/app.b4b2404158f7a0f6a1b059b96d70f895.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/me/static/js/manifest.735e5dda89a41b866cf0.js></script><script type=text/javascript src=/me/static/js/vendor.dc2e297d5ccf780f26d3.js></script><script type=text/javascript src=/me/static/js/app.ee0589f4281534220c8b.js></script></body></html>
+<!DOCTYPE html><html><head><meta charset=utf-8><title>Rafael Reis</title><script type=text/javascript>// Single Page Apps for GitHub Pages
+      // https://github.com/rafrex/spa-github-pages
+      // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
+      // ----------------------------------------------------------------------
+      // This script checks to see if a redirect is present in the query string
+      // and converts it back into the correct url and adds it to the
+      // browser's history using window.history.replaceState(...),
+      // which won't cause the browser to attempt to load the new url.
+      // When the single page app is loaded further down in this file,
+      // the correct url will be waiting in the browser's history for
+      // the single page app to route accordingly.
+      (function(l) {
+        if (l.search) {
+          var q = {};
+          l.search.slice(1).split('&').forEach(function(v) {
+            var a = v.split('=');
+            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
+          });
+          if (q.p !== undefined) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + (q.p || '') +
+              (q.q ? ('?' + q.q) : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location))</script><link href=/me/static/css/app.aebce375fe5fa20d8cff873c78ccb120.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/me/static/js/manifest.73a44bf8985307b2155d.js></script><script type=text/javascript src=/me/static/js/vendor.39b587b30758e96f8543.js></script><script type=text/javascript src=/me/static/js/app.08cb2eaa67e69b1a133a.js></script></body></html>
