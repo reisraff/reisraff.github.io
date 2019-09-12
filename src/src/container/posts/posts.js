@@ -60,6 +60,7 @@ export default {
           entry['lang'] = lang
           for (var key in entry.preview) {
             entry.preview[key] = converter.makeHtml(entry.preview[key])
+            entry.preview[key] = entry.preview[key].replace(/post-assets/g, '../static/post-assets')
           }
 
           return entry;

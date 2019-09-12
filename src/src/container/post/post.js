@@ -42,6 +42,7 @@ export default {
       vm.post.title = lines[0].split('# ')[1]
       lines.shift()
       vm.post.body = converter.makeHtml(lines.join('\n'))
+      vm.post.body = vm.post.body.replace(/post-assets/g, '../../static/post-assets')
       vm.post.timestamp = postId
     })
     .catch(function (error) {
