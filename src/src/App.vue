@@ -16,6 +16,7 @@ export default {
 
 .site {
   font-family: 'Source Code Pro', monospace;
+  padding-top: 2em;
 }
 
 .is-normal-alignment {

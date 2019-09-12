@@ -12,30 +12,29 @@
           </div>
 
           <div class="spacing">
-            <h1 class="title">You're almost there, just read and go</h1>
+            <h1 class="title">{{ trans[lang].title }}</h1>
           </div>
 
           <div class="spacing">
-            <span class="subtitle">
-              Attackers always is trying to steal your information (for example, passwords, messages or credit cards)! Welcome to my page <strong>https://reisraff.github.io/</strong>. NET::ERR_IT_IS_NOT_AN_ERROR
+            <span class="subtitle" v-html="trans[lang].subtitle">
             </span>
           </div>
 
           <div class="spacing">
             <label class="checkbox">
               <input type="checkbox" />
-              Automatically report details of possible security incidents to Everyone.
+              {{ trans[lang].checkbox }}
             </label>
           </div>
 
           <div class="spacing columns">
             <div class="column is-paddingless">
               <a href="javascript://" @click="showAdvanced = !showAdvanced">
-                {{showAdvanced ? 'SHOW LESS' : 'ADVANCED'}}
+                {{ showAdvanced ? trans[lang].showLess : trans[lang].advanced }}
               </a>
             </div>
             <div class="column is-paddingless">
-              <a class="button is-pulled-right has-background-blue" href="javascript://" @click="reload()">RELOAD</a>
+              <a class="button is-pulled-right has-background-blue" href="javascript://" @click="reload()">{{ trans[lang].reload }}</a>
             </div>
           </div>
         </div>
@@ -45,13 +44,12 @@
     <div class="section" v-if="showAdvanced">
       <div class="container">
         <div class="spacing">
-          <span class="subtitle">
-            Do not let things fool you, click below to proceed to <strong>https://reisraff.github.io</strong>;
+          <span class="subtitle" v-html="trans[lang].proceed">
           </span>
         </div>
 
         <div class="spacing">
-          <router-link to="/home">sudo go --to https://reisraff.github.io/</router-link>
+          <router-link :to="{ name: 'home', params: { 'lang': lang }}">{{ trans[lang].go }}</router-link>
         </div>
       </div>
     </div>

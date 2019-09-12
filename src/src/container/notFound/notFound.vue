@@ -2,6 +2,6 @@
 <script src="./notFound.js"></script>
 <template>
   <div>
-    <router-link to="/home">Go to Home page</router-link>
+    <router-link :to="{ name: 'home', params: { 'lang': lang }}">{{ trans[lang].goToHome }}</router-link>
   </div>
 </template>

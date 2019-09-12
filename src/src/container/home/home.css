@@ -11,6 +11,15 @@
   border-radius: 150px;
 }
 
+.cover {
+  background: url(../../assets/image/cover.jpg);
+  background-size: cover;
+  background-position: 0 80%;
+  background-repeat: no-repeat;
+  height: 480px;
+}
+
 .badge {
   margin: 20px;
+  display: inline-block;
 }
