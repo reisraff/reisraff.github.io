@@ -13,7 +13,7 @@ const TRANSLATIONS = {
   },
 }
 
-const URL_APPEND = process.NODE_ENV === 'development' ? '' : '/me'
+const URL_APPEND = process.env.NODE_ENV === 'development' ? '' : '/me'
 
 export default {
   name: 'post',
@@ -42,10 +42,24 @@ export default {
       var lines = response.data.split('\n')
 
       vm.post.title = lines[0].split('# ')[1]
+      vm.$head.changeTitle(vm.post.title)
+
       lines.shift()
       vm.post.body = converter.makeHtml(lines.join('\n'))
       vm.post.body = vm.post.body.replace(/post-assets/g, '../../static/post-assets')
       vm.post.timestamp = postId
+
+      lines = lines.filter(function (e) {
+        return e !== ''
+      })
+
+      vm.$head.changeMetas({
+        'description': lines[0] + '\n\n' + lines[1]
+      })
+      vm.$head.changeMetasProperties({
+        'og:title': 'Rafael Reis - ' + vm.post.title,
+        'og:description': lines[0] + '\n\n' + lines[1]
+      })
     })
     .catch(function (error) {
       console.error(error);
@@ -55,5 +69,5 @@ export default {
         vm.$router.go()
       }
     })
-  },
+  }
 }

@@ -6,17 +6,23 @@ const axios = require('axios');
 
 const TRANSLATIONS = {
   'en': {
+    'title': 'Posts',
+    'metaDescription': 'Posts wrote by Rafael Reis',
     'more': 'More'
   },
   'es': {
+    'title': 'Articulos',
+    'metaDescription': 'Articulos escritos por Rafael Reis',
     'more': 'Mas'
   },
   'pt': {
+    'title': 'Artigos',
+    'metaDescription': 'Artigos escritos por Rafael Reis',
     'more': 'Mais'
   },
 }
 
-const URL_APPEND = process.NODE_ENV === 'development' ? '' : '/me'
+const URL_APPEND = process.env.NODE_ENV === 'development' ? '' : '/me'
 
 export default {
   name: 'posts',
@@ -75,5 +81,16 @@ export default {
         console.error(error);
       })
     }
+  },
+  created: function () {
+    this.$head.changeTitle(TRANSLATIONS[this.$route.params.lang].title)
+
+    this.$head.changeMetas({
+      'description': TRANSLATIONS[this.$route.params.lang].metaDescription
+    })
+    this.$head.changeMetasProperties({
+      'og:title': 'Rafael Reis - ' + TRANSLATIONS[this.$route.params.lang].title,
+      'og:description': TRANSLATIONS[this.$route.params.lang].metaDescription
+    })
   }
 }

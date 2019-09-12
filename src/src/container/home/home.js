@@ -4,12 +4,15 @@ const postscribe = require('postscribe');
 
 const TRANSLATIONS = {
   'en': {
+    'title': 'Home',
     'subtitle': 'Independent Security Researcher, Gamer, Developer, Musician'
   },
   'es': {
+    'title': 'Inicio',
     'subtitle': 'Pesquisador de la seguridad de la Información, Gamer, Desarrollador, Musico'
   },
   'pt': {
+    'title': 'Início',
     'subtitle': 'Pesquisador de Segurança da Informação, Gamer, Desenvolvedor, Músico'
   },
 }
@@ -36,4 +39,7 @@ export default {
       }
     });
   },
+  created: function () {
+    this.$head.changeTitle(TRANSLATIONS[this.$route.params.lang].title)
+  }
 }

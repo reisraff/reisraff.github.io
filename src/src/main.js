@@ -8,9 +8,11 @@ import VueAnalytics from 'vue-analytics'
 
 import localStorage from './provider/localStorage'
 import lang from './provider/lang'
+import head from './provider/head'
 
 Vue.use(localStorage)
 Vue.use(lang)
+Vue.use(head)
 
 Vue.use(VueAnalytics, {
   id: 'UA-73718792-1',
@@ -23,6 +25,7 @@ new Vue({
   router,
   localStorage,
   lang,
+  head,
   template: '<App/>',
   components: { App }
 })
