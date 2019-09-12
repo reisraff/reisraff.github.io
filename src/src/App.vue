@@ -22,4 +22,22 @@ export default {
 .is-normal-alignment {
   align-items: normal !important;
 }
+
+a {
+  color: hsl(141, 71%, 48%);
+}
+
+a:hover {
+  color: hsl(48, 100%, 67%);
+}
+
+strong {
+  color: #fff;
+}
+
+p {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
 </style>

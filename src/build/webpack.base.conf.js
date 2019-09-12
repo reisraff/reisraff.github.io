@@ -61,6 +61,14 @@ module.exports = {
         }
       },
       {
+        test: /\.(json)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: utils.assetsPath('pagination/[name].[ext]')
+        }
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
         query: {

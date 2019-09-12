@@ -6,12 +6,16 @@ Vue.use(localStorage)
 
 const Index = () => import('container/index/index.vue')
 const Home = () => import('container/home/home.vue')
+const Posts = () => import('container/posts/posts.vue')
+const Post = () => import('container/post/post.vue')
 const NotFound = () => import('container/notFound/notFound.vue')
 
 // application routes
 const routes = [
   { path: '/', name: 'index', component: Index },
   { path: '/:lang/home', name: 'home', component: Home },
+  { path: '/:lang/post/:postId', name: 'post', component: Post },
+  { path: '/:lang/posts', name: 'posts', component: Posts },
   { path: '*', name: 'notFound', component: NotFound }
 ]
 

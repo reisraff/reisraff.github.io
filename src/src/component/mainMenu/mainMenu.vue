@@ -17,11 +17,11 @@
 
         <router-link :to="{ name: 'home', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].home }}</router-link>
 
-        <span class="navbar-item main-menu-separator has-text-white" v-if="!menuOpened">|</span>
-        <router-link :to="{ name: 'home', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].madeByMe }}</router-link>
+        <!-- <span class="navbar-item main-menu-separator has-text-white" v-if="!menuOpened">|</span>
+        <router-link :to="{ name: 'home', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].madeByMe }}</router-link> -->
 
         <span class="navbar-item main-menu-separator has-text-white" v-if="!menuOpened">|</span>
-        <router-link :to="{ name: 'home', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].posts }}</router-link>
+        <router-link :to="{ name: 'posts', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].posts }}</router-link>
 
       </div>
     </div>
