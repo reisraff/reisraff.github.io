@@ -19,8 +19,10 @@ export default {
     changeLanguage: function (newLang) {
       this.$localStorage.set('language', newLang)
 
+      var routeName = this.$route.name
+
       this.$router.replace('/')
-      this.$router.replace({name: this.$route.name, params: {lang: newLang}})
+      this.$router.replace({name: routeName, params: {lang: newLang}})
       this.$router.go()
     }
   }
