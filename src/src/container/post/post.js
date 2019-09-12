@@ -13,6 +13,8 @@ const TRANSLATIONS = {
   },
 }
 
+const URL_APPEND = process.ENV === 'development' ? '' : '/me'
+
 export default {
   name: 'post',
   data: function () {
@@ -36,7 +38,7 @@ export default {
 
     var postId = this.$route.params.postId.split('-')[0]
 
-    axios.get('/static/posts/' + this.lang + '/' + postId + '.md').then(function (response) {
+    axios.get(URL_APPEND + '/static/posts/' + this.lang + '/' + postId + '.md').then(function (response) {
       var lines = response.data.split('\n')
 
       vm.post.title = lines[0].split('# ')[1]

@@ -16,6 +16,8 @@ const TRANSLATIONS = {
   },
 }
 
+const URL_APPEND = process.ENV === 'development' ? '' : '/me'
+
 export default {
   name: 'posts',
   data: function () {
@@ -35,7 +37,7 @@ export default {
     var vm = this
     vm.paginate(1)
 
-    axios.get('/static/pagination/paginator.json').then(function (response) {
+    axios.get(URL_APPEND + '/static/pagination/paginator.json').then(function (response) {
       vm.pages = response.data.lastPage
     })
     .catch(function (error) {
@@ -48,7 +50,7 @@ export default {
       var vm = this
       var converter = new showdown.Converter()
 
-      axios.get('/static/pagination/page_' + page + '.json').then(function (response) {
+      axios.get(URL_APPEND + '/static/pagination/page_' + page + '.json').then(function (response) {
         var posts = response.data
 
         posts.map(function (entry) {
