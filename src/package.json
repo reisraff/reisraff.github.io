@@ -15,6 +15,7 @@
     "postscribe": "^2.0.8",
     "showdown": "^1.9.0",
     "vue": "2.1.10",
+    "vue-analytics": "^5.17.2",
     "vue-router": "2.2.0",
     "vuex": "2.1.2"
   },
