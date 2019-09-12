@@ -13,7 +13,7 @@ const TRANSLATIONS = {
   },
 }
 
-const URL_APPEND = process.ENV === 'development' ? '' : '/me'
+const URL_APPEND = process.NODE_ENV === 'development' ? '' : '/me'
 
 export default {
   name: 'post',
