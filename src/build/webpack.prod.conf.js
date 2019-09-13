@@ -10,6 +10,8 @@ var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
 
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -28,9 +30,12 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
+    new UglifyJSPlugin({
+      'uglifyOptions': {
+      // new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false
+        }
       }
     }),
     // extract css into its own file

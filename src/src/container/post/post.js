@@ -22,10 +22,12 @@ export default {
       lang: this.$route.params.lang,
       trans: TRANSLATIONS,
       post: {
+        id: '',
         title: '',
         body: '',
         timestamp: ''
       },
+      url: window.location.href
     }
   },
   components: {
@@ -37,6 +39,7 @@ export default {
     var converter = new showdown.Converter()
 
     var postId = this.$route.params.postId.split('-')[0]
+    vm.post.id = postId
 
     axios.get(URL_APPEND + '/static/posts/' + this.lang + '/' + postId + '.md').then(function (response) {
       var lines = response.data.split('\n')

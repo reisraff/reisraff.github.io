@@ -17,6 +17,12 @@
             </div>
           </div>
 
+          <div class="content">
+            <div class="comments">
+              <vue-disqus shortname="reisraff" :identifier="post.id" :url="url"></vue-disqus>
+            </div>
+          </div>
+
       </div>
     </div>
     <div class='hero-footer'>
