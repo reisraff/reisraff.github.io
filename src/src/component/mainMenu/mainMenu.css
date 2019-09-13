@@ -12,3 +12,7 @@
   color: hsl(0, 0%, 86%) !important;
   background: hsl(0, 0%, 29%) !important;
 }
+
+.main-menu {
+  background: #4a4a4a;
+}

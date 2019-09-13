@@ -17,6 +17,7 @@ export default {
 .site {
   font-family: 'Source Code Pro', monospace;
   padding-top: 2em;
+  /*display: table;*/
 }
 
 .is-normal-alignment {
@@ -38,6 +39,20 @@ strong {
 p {
   margin-top: 14px;
   margin-bottom: 14px;
+}
+
+.app {
+  display: block;
+}
+
+body {
+  display: block;
+}
+
+@media only screen and (max-width: 414px) {
+  .app {
+    display: flex;
+  }
 }
 
 </style>

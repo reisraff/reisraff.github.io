@@ -6,14 +6,14 @@
       <div class="container has-text-white">
           <mainMenu></mainMenu>
 
-          <div class="section">
-            <div class="section post-title">
+          <div class="content">
+            <div class="content post-title">
               <h1 class="title has-text-white">
                 {{ post.title }}
               </h1>
             </div>
 
-            <div class="section post-body has-text-white" v-html="post.body">
+            <div class="content post-body has-text-white" v-html="post.body">
             </div>
           </div>
 

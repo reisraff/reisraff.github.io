@@ -17,7 +17,10 @@
             <section class="content post-preview" v-html="post.preview[post.lang]"></section>
           </div>
 
-          <a href="javascript://" @click="paginate(page)" v-if="pages + 1 > page">{{ trans[lang].more }}</a>
+          <p>
+            <a href="javascript://" @click="paginate(page)" v-if="pages + 1 > page">{{ trans[lang].more }}</a>
+          </p>
+
       </div>
     </div>
     <div class='hero-footer'>

@@ -2,7 +2,7 @@
 <script src="./mainMenu.js"></script>
 <template>
   <nav class="navbar is-fixed-top container" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
+    <div class="navbar-brand main-menu">
       <!-- <router-link :to="{ name: 'home', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white has-background-grey-dark">Rafael Reis</router-link> -->
 
       <a role="button" class="navbar-burger burger has-text-white" v-bind:class="{ 'is-active': menuOpened }" aria-label="menu" aria-expanded="false" @click="menuOpened = !menuOpened">
