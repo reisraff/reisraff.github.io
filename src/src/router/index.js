@@ -31,6 +31,8 @@ router.beforeEach((to, from, next) => {
     Vue.prototype.$localStorage.set('language', to.params.lang)
   }
 
+  window.scrollTo(0, 0)
+
   next()
 })
 
