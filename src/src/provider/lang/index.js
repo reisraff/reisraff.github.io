@@ -14,6 +14,11 @@ export default {
         if (_self.get('language', null) === null) {
           var language = window.navigator.userLanguage || window.navigator.language || 'en'
           language = language.substring(0, 2)
+
+          var available = ['en', 'es', 'pt']
+
+          language = available.indexOf(language) !== -1 ? language : 'en'
+
           _self.set('language', language)
         }
       }
