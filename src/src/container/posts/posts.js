@@ -1,6 +1,7 @@
 import mainMenu from 'component/mainMenu/mainMenu.vue'
 import mainFooter from 'component/mainFooter/mainFooter.vue'
 import showdown from 'showdown'
+import moment from 'moment'
 
 const axios = require('axios');
 
@@ -70,6 +71,8 @@ export default {
             entry.preview[key] = converter.makeHtml(entry.preview[key])
             entry.preview[key] = entry.preview[key].replace(/post-assets/g, '../static/post-assets')
           }
+
+          entry['datetime'] = moment.unix(entry['timestamp']).format("DD/MMM/YYYY HH:mm")
 
           return entry;
         })

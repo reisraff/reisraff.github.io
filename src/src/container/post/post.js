@@ -1,6 +1,7 @@
 import mainMenu from 'component/mainMenu/mainMenu.vue'
 import mainFooter from 'component/mainFooter/mainFooter.vue'
 import showdown from 'showdown'
+import moment from 'moment'
 
 const axios = require('axios');
 
@@ -51,6 +52,7 @@ export default {
       vm.post.body = converter.makeHtml(lines.join('\n'))
       vm.post.body = vm.post.body.replace(/post-assets/g, '../../static/post-assets')
       vm.post.timestamp = postId
+      vm.post.datetime = moment.unix(vm.post.timestamp).format("DD/MMM/YYYY HH:mm")
 
       lines = lines.filter(function (e) {
         return e !== ''

@@ -14,6 +14,10 @@
               </router-link>
             </section>
 
+            <section class="datetime">
+              <span>{{ post.datetime }}</span>
+            </section>
+
             <section class="content post-preview" v-html="post.preview[post.lang]"></section>
           </div>
 

@@ -13,6 +13,10 @@
               </h1>
             </div>
 
+            <class class="datetime">
+              <span>{{ post.datetime }}</span>
+            </class>
+
             <div class="content post-body has-text-white" v-html="post.body">
             </div>
           </div>

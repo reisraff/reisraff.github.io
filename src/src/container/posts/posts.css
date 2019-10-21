@@ -1,7 +1,3 @@
-.post-title {
-  padding: 12px 12px;
-}
-
-.post-preview {
+.post-title, .post-preview, .datetime {
   padding: 12px 12px;
 }
