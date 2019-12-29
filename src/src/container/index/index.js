@@ -43,10 +43,20 @@ export default {
   created: function () {
     this.$lang.init()
     this.lang = this.$localStorage.get('language', 'en')
+
+    let firstOpen = parseInt(this.$localStorage.get('firstOpen', '1'))
+
+    if (!firstOpen) {
+      this.$router.replace({ name: 'home', params: { 'lang': this.lang }});
+    }
   },
   methods: {
     reload: function () {
       window.location.reload();
+    },
+    goHome: function () {
+      this.$localStorage.set('firstOpen', '0')
+      this.$router.replace({ name: 'home', params: { 'lang': this.lang }});
     }
   }
 }

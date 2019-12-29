@@ -49,7 +49,7 @@
         </div>
 
         <div class="spacing">
-          <router-link :to="{ name: 'home', params: { 'lang': lang }}">{{ trans[lang].go }}</router-link>
+          <a href="javascript://" @click="goHome()">{{ trans[lang].go }}</a>
         </div>
       </div>
     </div>
