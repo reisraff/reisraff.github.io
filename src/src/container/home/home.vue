@@ -43,7 +43,7 @@
                   <a href="https://github.com/reisraff" target="_blank"><img alt="github" class="svg" src="../../assets/image/github.svg"></a>
                 </div>
                 <div class="column has-text-centered">
-                  <a href="https://medium.com/@reisraff" target="_blank"><img alt="medium" class="svg" src="../../assets/image/medium.svg"></a>
+                  <a href="https://www.reddit.com/user/reisraff" target="_blank"><img style="height: 56.6934px" alt="reddit" class="svg" src="../../assets/image/reddit.png"></a>
                 </div>
             </div>
           </div>
