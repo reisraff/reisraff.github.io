@@ -6,20 +6,20 @@
       <div class="container has-text-white">
           <mainMenu></mainMenu>
 
-          <div v-for="(post, index) in posts" :class="{'has-background-grey': index % 2 === 0, '': index % 2 !== 0 }">
+          <router-link v-for="(post, index) in posts" :to="{ name: 'post', params: { 'lang': post.lang, 'postId': post.postId[post.lang] }}">
+            <div class="post-container" :class="{'has-background-grey': index % 2 === 0, '': index % 2 !== 0 }">
 
-            <section class="section post-title">
-              <router-link :to="{ name: 'post', params: { 'lang': post.lang, 'postId': post.postId[post.lang] }}">
-                <h2 class="title has-text-white-bis">{{ post.title[post.lang] }}</h2>
-              </router-link>
-            </section>
+              <section class="section post-title">
+                  <h2 class="title has-text-white-bis">{{ post.title[post.lang] }}</h2>
+              </section>
 
-            <section class="datetime">
-              <span>{{ post.datetime }}</span>
-            </section>
+              <section class="datetime">
+                <span>{{ post.datetime }}</span>
+              </section>
 
-            <section class="content post-preview" v-html="post.preview[post.lang]"></section>
-          </div>
+              <section class="content post-preview" v-html="post.preview[post.lang]"></section>
+            </div>
+          </router-link>
 
           <p>
             <a href="javascript://" @click="paginate(page)" v-if="pages + 1 > page">{{ trans[lang].more }}</a>

@@ -3,16 +3,19 @@ const TRANSLATIONS = {
     'home': 'Home',
     'madeByMe': 'Made by me',
     'posts': 'Posts',
+    'myDiscord': 'My Discord',
   },
   'es' : {
     'home': 'Inicio',
     'madeByMe': 'Hecho por mi',
     'posts': 'Articulos',
+    'myDiscord': 'Mio Discord',
   },
   'pt' : {
     'home': 'Início',
     'madeByMe': 'Feito por mim',
     'posts': 'Artigos',
+    'myDiscord': 'Meu Discord',
   }
 }
 
