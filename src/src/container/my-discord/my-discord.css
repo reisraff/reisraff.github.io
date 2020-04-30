@@ -54,3 +54,13 @@
   vertical-align: middle;
   color: white;
 }
+
+@media only screen and (max-width: 600px) {
+  .discord-container {
+    display: block;
+    text-align: center;
+  }
+  .discord-content {
+    margin-left: 0px;
+  }
+}
