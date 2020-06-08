@@ -34,7 +34,7 @@
                   <a href="tel:+5511984416276" target="_blank"><img alt="whatsapp" class="svg" src="../../assets/image/whatsapp.svg"></a>
                 </div>
                 <div class="column has-text-centered">
-                  <a href="https://t.me/reisraff target="_blank""><img alt="telegram" style="width: 51px" class="svg" src="../../assets/image/telegram.png"></a>
+                  <a href="https://t.me/reisraff" target="_blank"><img alt="telegram" style="width: 51px" class="svg" src="../../assets/image/telegram.png"></a>
                 </div>
                 <div class="column has-text-centered">
                   <a href="https://twitter.com/reisraff" target="_blank"><img alt="twitter" class="svg" src="../../assets/image/twitter.svg"></a>
