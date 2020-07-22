@@ -1,5 +1,5 @@
 .margin-top {
-  margin-top: 10em;
+  margin-top: 6em;
 }
 
 .discord {
@@ -13,16 +13,16 @@
   border-radius: 5px;
 }
 
-.discord-image {
+.network-image {
   border-radius: 40px;
 }
 
-.discord-container {
+.network-container {
   margin-top: 15px;
   display: flex;
 }
 
-.discord-content {
+.network-content {
   padding-top: 32px;
   margin-left: 25px;
   display: inline-block;
@@ -41,7 +41,7 @@
   text-align-last: center;
 }
 
-.discord-button {
+.network-button {
   text-align-last: center;
   background-color: #4EA375;
   width: 150px;
@@ -50,17 +50,17 @@
   padding-top: 11px;
 }
 
-.discord-content a {
+.network-content a {
   vertical-align: middle;
   color: white;
 }
 
 @media only screen and (max-width: 600px) {
-  .discord-container {
+  .network-container {
     display: block;
     text-align: center;
   }
-  .discord-content {
+  .network-content {
     margin-left: 0px;
   }
 }

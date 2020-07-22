@@ -3,19 +3,19 @@ const TRANSLATIONS = {
     'home': 'Home',
     'madeByMe': 'Made by me',
     'posts': 'Posts',
-    'myDiscord': 'My Discord',
+    'byteOff': 'Byte Off',
   },
   'es' : {
     'home': 'Inicio',
     'madeByMe': 'Hecho por mi',
     'posts': 'Articulos',
-    'myDiscord': 'Mio Discord',
+    'byteOff': 'Byte Off',
   },
   'pt' : {
     'home': 'Início',
     'madeByMe': 'Feito por mim',
     'posts': 'Artigos',
-    'myDiscord': 'Meu Discord',
+    'byteOff': 'Byte Off',
   }
 }
 
@@ -26,6 +26,19 @@ export default {
       menuOpened: false,
       lang: this.$route.params.lang,
       trans: TRANSLATIONS,
+    }
+  },
+  methods: {
+    changeLanguage: function (newLang) {
+      this.$localStorage.set('language', newLang)
+
+      var routeName = this.$route.name
+      var params = this.$route.params
+      params.lang = newLang
+
+      this.$router.replace('/')
+      this.$router.replace({name: routeName, params: params})
+      this.$router.go()
     }
   }
 }

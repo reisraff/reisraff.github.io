@@ -7,7 +7,7 @@ Vue.use(localStorage)
 const Index = () => import('container/index/index.vue')
 const Home = () => import('container/home/home.vue')
 const Posts = () => import('container/posts/posts.vue')
-const MyDiscord = () => import('container/my-discord/my-discord.vue')
+const ByteOff = () => import('container/byte-off/byte-off.vue')
 const Post = () => import('container/post/post.vue')
 const NotFound = () => import('container/notFound/notFound.vue')
 
@@ -17,7 +17,7 @@ const routes = [
   { path: '/:lang/home', name: 'home', component: Home },
   { path: '/:lang/post/:postId', name: 'post', component: Post },
   { path: '/:lang/posts', name: 'posts', component: Posts },
-  { path: '/:lang/my-discord', name: 'my-discord', component: MyDiscord },
+  { path: '/:lang/byte-off', name: 'byte-off', component: ByteOff },
   { path: '*', name: 'notFound', component: NotFound }
 ]
 

@@ -4,21 +4,21 @@ const axios = require('axios');
 
 const TRANSLATIONS = {
   'en': {
-    'title': 'My Discord',
+    'title': 'Byte Off',
     'subtitle': 'This server there is the purpose of to share our knowledge with others, be welcome.',
     'discordSubtitle': 'A single byte that make all difference',
     'online': 'Online',
     'join': 'Join',
   },
   'es': {
-    'title': 'Mio Discord',
+    'title': 'Byte Off',
     'subtitle': 'Este servidor tiene el proposito de compartir nuestros conocimientos con otras personas, bien venido.',
     'discordSubtitle': 'Un unico byte que hace la diferencia',
     'online': 'Online',
     'join': 'Entrar',
   },
   'pt': {
-    'title': 'Meu Discord',
+    'title': 'Byte Off',
     'subtitle': 'Esse server tem como proposito compartilhar nosso conhecimento com outras pessoas, seja bem vindo.',
     'discordSubtitle': 'Um unico byte que faz toda a diferença',
     'online': 'Online',

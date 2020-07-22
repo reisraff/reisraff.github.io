@@ -24,8 +24,15 @@
         <router-link :to="{ name: 'posts', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].posts }}</router-link>
 
         <span class="navbar-item main-menu-separator has-text-white" v-if="!menuOpened">|</span>
-        <router-link :to="{ name: 'my-discord', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].myDiscord }}</router-link>
+        <router-link :to="{ name: 'byte-off', params: { 'lang': lang }}" class="navbar-item main-menu-item has-text-white">{{ trans[lang].byteOff }}</router-link>
 
+        <span class="navbar-item main-menu-separator has-text-white" v-if="!menuOpened">-</span>
+
+        <div class="is-pulled-right padding-20">
+          <a href="javascript://" @click="changeLanguage('pt')" v-if="lang != 'pt'"><img src="../../assets/image/brazil_flag.png" /></a>
+          <a href="javascript://" @click="changeLanguage('es')" v-if="lang != 'es'"><img src="../../assets/image/spain_flag.png" /></a>
+          <a href="javascript://" @click="changeLanguage('en')" v-if="lang != 'en'"><img src="../../assets/image/usa_flag.png" /></a>
+        </div>
       </div>
     </div>
   </nav>
