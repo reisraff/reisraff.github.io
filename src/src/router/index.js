@@ -33,6 +33,23 @@ router.beforeEach((to, from, next) => {
     Vue.prototype.$localStorage.set('language', to.params.lang)
   }
 
+  let firstOpen = parseInt(Vue.prototype.$localStorage.get('firstOpen', '1'))
+
+  if (firstOpen && to.name !== 'index') {
+    Vue.prototype.$localStorage.set('next', JSON.stringify(to))
+    router.replace({ name: 'index' })
+    return
+  }
+
+  let _to = Vue.prototype.$localStorage.get('next', null)
+
+  if (!firstOpen && _to) {
+    Vue.prototype.$localStorage.remove('next')
+    _to = JSON.parse(_to)
+    router.replace(_to)
+    return
+  }
+
   window.scrollTo(0, 0)
 
   next()

@@ -44,12 +44,11 @@
     <div class="section" v-if="showAdvanced">
       <div class="container">
         <div class="spacing">
-          <span class="subtitle" v-html="trans[lang].proceed">
-          </span>
+          <span class="subtitle" v-html="trans[lang].proceed"></span><span class="subtitle"><strong>{{ next }}</strong></span>
         </div>
 
         <div class="spacing">
-          <a href="javascript://" @click="goHome()">{{ trans[lang].go }}</a>
+          <a href="javascript://" @click="goHome()">{{ trans[lang].go }}{{ next }}</a>
         </div>
       </div>
     </div>

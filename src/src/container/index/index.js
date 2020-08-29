@@ -6,8 +6,8 @@ const TRANSLATION = {
     'showLess': 'SHOW LESS',
     'advanced': 'ADVANCED',
     'reload': 'RELOAD',
-    'proceed': 'Do not let things fool you, click below to proceed to <strong>https://reisraff.github.io</strong>;',
-    'go': 'sudo go --to https://reisraff.github.io/'
+    'proceed': 'Do not let things fool you, click below to proceed to <strong>https://reisraff.github.io</strong>',
+    'go': 'sudo go --to https://reisraff.github.io'
   },
   'es': {
     'title': 'Está case alla, solamente leya y vá',
@@ -16,8 +16,8 @@ const TRANSLATION = {
     'showLess': 'MOSTRAR MENOS',
     'advanced': 'AVANZADO',
     'reload': 'RECARGAR',
-    'proceed': 'No deje las cosas enganarte, clique abajo para seguir para <strong>https://reisraff.github.io</strong>;',
-    'go': 'sudo go --to https://reisraff.github.io/'
+    'proceed': 'No deje las cosas enganarte, clique abajo para seguir para <strong>https://reisraff.github.io</strong>',
+    'go': 'sudo go --to https://reisraff.github.io'
   },
   'pt': {
     'title': 'Está quase lá, leia e vá',
@@ -26,8 +26,8 @@ const TRANSLATION = {
     'showLess': 'MOSTRAR MENOS',
     'advanced': 'AVANÇADO',
     'reload': 'RECARREGAR',
-    'proceed': 'Não deixe as coisas te enganarem, clique abaixo para ir para <strong>https://reisraff.github.io</strong>;',
-    'go': 'sudo go --to https://reisraff.github.io/'
+    'proceed': 'Não deixe as coisas te enganarem, clique abaixo para ir para <strong>https://reisraff.github.io</strong>',
+    'go': 'sudo go --to https://reisraff.github.io'
   },
 }
 
@@ -38,11 +38,20 @@ export default {
       showAdvanced: false,
       trans: TRANSLATION,
       lang: 'en',
+      next: '/'
     }
   },
   created: function () {
     this.$lang.init()
     this.lang = this.$localStorage.get('language', 'en')
+
+    let _next = this.$localStorage.get('next', null)
+
+
+    if (_next) {
+      _next = JSON.parse(_next)
+      this.next = _next.path
+    }
 
     let firstOpen = parseInt(this.$localStorage.get('firstOpen', '1'))
 

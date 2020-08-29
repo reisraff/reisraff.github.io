@@ -6,6 +6,9 @@ export default {
       },
       get: function (key, defaultValue) {
         return window.localStorage[key] || defaultValue
+      },
+      remove: function (key) {
+        window.localStorage.removeItem(key)
       }
     }
   }
