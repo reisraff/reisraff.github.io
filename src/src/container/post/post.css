@@ -5,3 +5,7 @@
 .post-preview {
   padding: 12px 12px;
 }
+
+h2, h3, h4, h5 {
+  color: #418c6c !important;
+}
