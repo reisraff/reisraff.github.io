@@ -3,7 +3,7 @@ import router from './router'
 
 import App from './App'
 
-import VueAnalytics from 'vue-analytics'
+import VueGtag from 'vue-gtag'
 import VueDisqus from 'vue-disqus'
 
 import localStorage from './provider/localStorage'
@@ -15,9 +15,8 @@ Vue.use(localStorage)
 Vue.use(lang)
 Vue.use(head)
 
-Vue.use(VueAnalytics, {
-  id: 'UA-73718792-1',
-  router
+Vue.use(VueGtag, {
+  config: { id: 'G-ZHQ9NV0LFW' }
 })
 
 /* eslint-disable no-new */
