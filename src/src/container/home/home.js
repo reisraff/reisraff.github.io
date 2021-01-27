@@ -5,17 +5,22 @@ const postscribe = require('postscribe');
 const TRANSLATIONS = {
   'en': {
     'title': 'Home',
-    'subtitle': 'Independent Security Researcher, Gamer, Developer, Musician'
+    'subtitle': 'Independent Security Researcher, Gamer, Developer, Musician',
+    'public_gpg': 'Public GPG Key'
   },
   'es': {
     'title': 'Inicio',
-    'subtitle': 'Pesquisador de la seguridad de la Información, Gamer, Desarrollador, Musico'
+    'subtitle': 'Pesquisador de la seguridad de la Información, Gamer, Desarrollador, Musico',
+    'public_gpg': 'Llave GPG Publica'
   },
   'pt': {
     'title': 'Início',
-    'subtitle': 'Pesquisador de Segurança da Informação, Gamer, Desenvolvedor, Músico'
+    'subtitle': 'Pesquisador de Segurança da Informação, Gamer, Desenvolvedor, Músico',
+    'public_gpg': 'Chave Pública GPG'
   },
 }
+
+const URL_APPEND = process.env.NODE_ENV === 'development' ? '' : '/me'
 
 export default {
   name: 'home',
@@ -23,7 +28,8 @@ export default {
     return {
       showAdvanced: false,
       lang: this.$route.params.lang,
-      trans: TRANSLATIONS
+      trans: TRANSLATIONS,
+      gpgKey: URL_APPEND + '/static/reisraff.pub'
     }
   },
   components: {

@@ -20,6 +20,12 @@
                 <div class="badge" id="badge"></div>
               </a>
             </div>
+
+            <div class="container">
+              <a :href="gpgKey" target="_blank">
+                {{ trans[lang].public_gpg }}
+              </a>
+            </div>
           </div>
 
           <div>
