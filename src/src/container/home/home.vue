@@ -16,7 +16,7 @@
             </span>
 
             <div class="container">
-              <a href="https://www.hackthebox.eu/profile/79586" target="_blank">
+              <a href="https://app.hackthebox.com/profile/79586" target="_blank">
                 <div class="badge" id="badge"></div>
               </a>
             </div>
